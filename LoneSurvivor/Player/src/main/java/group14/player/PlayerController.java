@@ -21,7 +21,7 @@ public class PlayerController implements IUpdate {
 
     @Override
     public void update(GameData gameData, World world) {
-    
+        System.out.println("heaven is bye");
     }
     
 }

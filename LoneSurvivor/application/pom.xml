@@ -31,8 +31,12 @@
             <artifactId>LoneSurvivor-branding</artifactId>
             <version>${project.version}</version>
         </dependency>
-        
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>SilentUpdate</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+<!--        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>GameEngine</artifactId>
             <version>${project.version}</version>
@@ -46,7 +50,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>Player</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
         <!-- NbModuleSuite functional in RELEASE70 or later: -->
         <dependency>
             <groupId>org.netbeans.api</groupId>

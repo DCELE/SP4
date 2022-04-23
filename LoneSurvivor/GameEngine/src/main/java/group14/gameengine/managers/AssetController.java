@@ -42,7 +42,7 @@ public class AssetController {
             Sprite sprite = new Sprite(texture);
             Position position = entity.getComponent(Position.class);
 
-            sprite.setScale(0.35f);
+            sprite.setScale(3);
             if (position.getRadians() > Math.PI / 2 || position.getRadians() < -(Math.PI / 2)) {
                 sprite.flip(true, false);
             }

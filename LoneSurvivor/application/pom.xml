@@ -16,14 +16,15 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <all.clusters>${project.build.directory}/${brandingToken}</all.clusters>
+        <netbeans.run.params.ide/>
+        <netbeans.run.params>${netbeans.run.params.ide} --nosplash</netbeans.run.params> 
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.netbeans.cluster</groupId>
-            <artifactId>platform</artifactId>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-core-startup</artifactId>
             <version>${netbeans.version}</version>
-            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -92,8 +93,6 @@
                                 <id>extra</id>
                                 <goals>
                                     <goal>autoupdate</goal>
-                                    <goal>webstart-app</goal>
-                                    <goal>build-installers</goal>
                                 </goals>
                             </execution>
                         </executions>

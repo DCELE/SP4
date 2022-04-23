@@ -17,6 +17,9 @@
                 <configuration>
                     <publicPackages>
                         <publicPackage>group14.common.game</publicPackage>
+                        <publicPackage>group14.common.gameobjects</publicPackage>
+                        <publicPackage>group14.common.gameobjects.components</publicPackage>
+                        <publicPackage>group14.common.services</publicPackage>
                     </publicPackages>
                 </configuration>
             </plugin>

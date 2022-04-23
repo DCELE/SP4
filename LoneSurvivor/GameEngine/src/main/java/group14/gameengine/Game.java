@@ -8,7 +8,19 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import group14.common.game.GameData;
+import group14.common.game.World;
+import group14.common.gameobjects.Entity;
+import group14.common.services.IPlugin;
+import group14.common.services.IUpdate;
+import group14.gameengine.managers.AssetController;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import org.openide.util.Lookup;
+import org.openide.util.LookupEvent;
+import org.openide.util.LookupListener;
 
 /**
  *
@@ -18,6 +30,12 @@ public class Game implements ApplicationListener{
 
     public static OrthographicCamera cam;
     private final GameData gameData = new GameData();
+    private final Lookup lookup = Lookup.getDefault();
+    private List<IPlugin> gamePlugins = new CopyOnWriteArrayList<>();
+    private Lookup.Result<IPlugin> result;
+    private World world = new World();
+    private SpriteBatch spriteBatch;
+    private AssetController assetController;
     
     @Override
     public void create() {
@@ -27,6 +45,11 @@ public class Game implements ApplicationListener{
         cam = new OrthographicCamera(gameData.getSceneWidth(), gameData.getSceneHeight());
         cam.translate(gameData.getSceneWidth() / 2, gameData.getSceneHeight() / 2);
         cam.update();
+        this.spriteBatch = new SpriteBatch();
+        this.assetController = new AssetController();
+        result = lookup.lookupResult(IPlugin.class);
+        result.addLookupListener(lookupListener);
+        result.allItems();
     }
 
     @Override
@@ -40,6 +63,9 @@ public class Game implements ApplicationListener{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         gameData.getInput().update();
         gameData.getInput().updateMouse(Gdx.input.getX(), gameData.getSceneHeight() - Gdx.input.getY());
+        for (IUpdate update : lookup.lookupAll(IUpdate.class)) {
+            update.update(gameData, world);
+        }
     }
 
     @Override
@@ -57,6 +83,39 @@ public class Game implements ApplicationListener{
     
     }
     
+    private void draw() {
+    spriteBatch.begin();
+    for (Entity entity : world.getEntities()) {
+        assetController.drawEntity(entity, this.spriteBatch);
+    }
+    spriteBatch.end();
+    
+    }
+    
+    private final LookupListener lookupListener = new LookupListener() {
+        @Override
+        public void resultChanged(LookupEvent le) {
+
+            Collection<? extends IPlugin> updated = result.allInstances();
+
+            for (IPlugin plugins : updated) {
+                // Newly installed modules
+                if (!gamePlugins.contains(plugins)) {
+                    plugins.start(gameData, world);
+                    gamePlugins.add(plugins);
+                }
+            }
+
+            // Stop and remove module
+            for (IPlugin plugins : gamePlugins) {
+                if (!updated.contains(plugins)) {
+                    plugins.stop(gameData, world);
+                    gamePlugins.remove(plugins);
+                }
+            }
+        }
+
+    };
     
     
 }

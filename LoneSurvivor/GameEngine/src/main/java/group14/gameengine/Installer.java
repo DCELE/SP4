@@ -26,8 +26,8 @@ public class Installer extends ModuleInstall {
         LwjglApplicationConfiguration cfg
                 = new LwjglApplicationConfiguration();
         cfg.title = "LoneSurvivor";
-        cfg.width = 840;
-        cfg.height = 840;
+        cfg.width = 400;
+        cfg.height = 400;
         cfg.useGL30 = false;
         cfg.resizable = false;
 

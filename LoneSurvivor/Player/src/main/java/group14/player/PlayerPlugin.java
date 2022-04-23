@@ -26,6 +26,11 @@ public class PlayerPlugin implements IPlugin{
     public void start(GameData gameData, World world) {
     Entity player = createPlayer(gameData);
     world.addEntity(player);
+    
+    
+    
+    
+        System.out.println("player random");
     }
 
     @Override

@@ -66,6 +66,7 @@ public class Game implements ApplicationListener{
         for (IUpdate update : lookup.lookupAll(IUpdate.class)) {
             update.update(gameData, world);
         }
+        draw();
     }
 
     @Override

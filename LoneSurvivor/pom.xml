@@ -61,6 +61,7 @@
     <modules>
         <module>branding</module>
         <module>application</module>
+        <module>GameEngine</module>
     </modules>
 
     <properties>

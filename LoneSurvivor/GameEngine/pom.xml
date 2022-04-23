@@ -6,7 +6,6 @@
         <artifactId>LoneSurvivor-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>lonesurvivor</groupId>
     <artifactId>GameEngine</artifactId>
     <packaging>nbm</packaging>
     <build>

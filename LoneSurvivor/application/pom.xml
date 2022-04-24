@@ -53,6 +53,7 @@
             <artifactId>Player</artifactId>
             <version>${project.version}</version>
         </dependency>-->
+        
         <!-- NbModuleSuite functional in RELEASE70 or later: -->
         <dependency>
             <groupId>org.netbeans.api</groupId>

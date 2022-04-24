@@ -31,6 +31,7 @@ public class PlayerController implements IUpdate {
 
     @Override
     public void update(GameData gameData, World world) {
+        //System.out.println(world.getEntities(Player.class).size());
         for (Entity player : world.getEntities(Player.class)) {
             Position position = player.getComponent(Position.class);
             Movement movement = player.getComponent(Movement.class);

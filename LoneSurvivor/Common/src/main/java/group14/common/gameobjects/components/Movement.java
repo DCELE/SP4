@@ -16,14 +16,12 @@ public class Movement implements Component{
 
     
     private float dx, dy;
-    private float acceleration;
-    private float maxSpeed;
+    private float speed;
     private boolean left, right, up, down;
     
     
-    public Movement(float acceleration, float maxSpeed) {
-        this.acceleration = acceleration;
-        this.maxSpeed = maxSpeed;
+    public Movement( float speed) {
+        this.speed = speed;
     }
     
     public float getDx() {
@@ -43,25 +41,15 @@ public class Movement implements Component{
     }
 
 
-    public float getAcceleration() {
-        return acceleration;
-    }
     
-    public void setAcceleration(float acceleration) {
-        this.acceleration = acceleration;
-    }
-    
-    public float getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(float maxSpeed) {
-        this.maxSpeed = maxSpeed;
+    public float getSpeed() {
+        return speed;
     }
 
     public void setSpeed(float speed) {
-        this.maxSpeed = speed;
+        this.speed = speed;
     }
+
 
     public void setLeft(boolean left) {
         this.left = left;
@@ -106,42 +94,27 @@ public class Movement implements Component{
        
         // If pressing up or down, the player will move on the y axis           
         if (up) {
-            dy += acceleration * dt;
+            dy += speed * dt;
         } else if (down) {
-            dy -= acceleration * dt;
+            dy -= speed * dt;
         }
         
         // If pressing left or right, the player will move on the x axis
         if (right) {
-            dx += acceleration * dt;
+            dx += speed * dt;
         } else if (left) {
-            dx -= acceleration * dt;
-        }
-
-        // deccelerating
-        float vec = (float) sqrt(dx * dx + dy * dy);
-        if (up == false && down == false && vec >0) {
-            dy -= (dy / vec) * 500 * dt;
-        }
-        
-        if (right == false && left == false && vec >0) {
-            dx -= (dx / vec) * 500 * dt;
-        }
-        
-        if (vec > maxSpeed) {
-            dx = (dx / vec) * maxSpeed;
-            dy = (dy / vec) * maxSpeed;
+            dx -= speed * dt;
         }
 
         // set position
-        x += dx * dt;
+        x += dx;
         if (x > gameData.getSceneWidth()) {
             x = 0;
         } else if (x < 0) {
             x = gameData.getSceneWidth();
         }
 
-        y += dy * dt;
+        y += dy;
         if (y > gameData.getSceneHeight()) {
             y = 0;
         } else if (y < 0) {
@@ -151,6 +124,8 @@ public class Movement implements Component{
         position.setX(x);
         position.setY(y);
 
+        dx = 0;
+        dy = 0;
     }
     
     

@@ -23,7 +23,6 @@ public class GameInputProcessor extends InputAdapter{
     public boolean keyDown(int k) {
         if (k == Keys.UP) {
             gameData.getInput().setKeyStatus(Input.UP, true);
-            System.out.println("gå op");
         }
         if (k == Keys.LEFT) {
             gameData.getInput().setKeyStatus(Input.LEFT, true);

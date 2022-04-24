@@ -7,6 +7,8 @@ package group14.player;
 import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
+import group14.common.gameobjects.Player;
+import group14.common.gameobjects.components.Movement;
 import group14.common.gameobjects.components.Position;
 import group14.common.services.IPlugin;
 import org.openide.util.lookup.ServiceProvider;
@@ -30,7 +32,6 @@ public class PlayerPlugin implements IPlugin{
     
     
     
-        System.out.println("player random"); // skal slettes efter
     }
 
     @Override
@@ -41,19 +42,20 @@ public class PlayerPlugin implements IPlugin{
     private Entity createPlayer(GameData gameData) {
         
         //float deacceleration = 10;
-        float acceleration = 500;
-        float maxSpeed = 300;
+        float speed = 300;
         //float rotationSpeed = 5;
         float radius = 8;
         
         
-        Entity player = new Entity("player.png");
+        Entity player = new Player("player.png");
         Position playerPosition = new Position(gameData.getSceneWidth()/2, gameData.getSceneHeight()/2, 3.1415f / 2);
         
+        Movement playerMovement = new Movement(speed);
         
         
         
         player.addComponent(playerPosition);
+        player.addComponent(playerMovement);
         return player;
     } 
     

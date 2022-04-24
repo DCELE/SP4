@@ -15,6 +15,7 @@ import group14.common.gameobjects.Entity;
 import group14.common.services.IPlugin;
 import group14.common.services.IUpdate;
 import group14.gameengine.managers.AssetController;
+import group14.gameengine.managers.GameInputProcessor;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -41,6 +42,7 @@ public class Game implements ApplicationListener{
     public void create() {
         gameData.setSceneWidth(Gdx.graphics.getWidth());
         gameData.setSceneHeight(Gdx.graphics.getHeight());
+        Gdx.input.setInputProcessor(new GameInputProcessor(gameData));
 
         cam = new OrthographicCamera(gameData.getSceneWidth(), gameData.getSceneHeight());
         cam.translate(gameData.getSceneWidth() / 2, gameData.getSceneHeight() / 2);

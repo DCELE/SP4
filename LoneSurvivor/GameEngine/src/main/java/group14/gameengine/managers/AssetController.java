@@ -29,6 +29,7 @@ public class AssetController {
 
     private void loadAssets() {
         assetManager.load("assets/player.png", Texture.class);
+        assetManager.load("assets/enemy.png", Texture.class);
 
     }
 

@@ -37,13 +37,13 @@ public class EnemyPlugin implements IPlugin{
         float radius = 8;
         
         
-        Entity enemy = new Entity("player.png");
-        Position playerPosition = new Position(gameData.getSceneWidth()/3, gameData.getSceneHeight()/3, 3.1415f / 3);
+        Entity enemy = new Entity("enemy.png");
+        Position enemyPosition = new Position(gameData.getSceneWidth()/3, gameData.getSceneHeight()/3, 3.1415f / 2);
         
         
         
         
-        enemy.addComponent(playerPosition);
+        enemy.addComponent(enemyPosition);
         return enemy;
     }
 

@@ -65,6 +65,9 @@
         <module>Common</module>
         <module>Player</module>
         <module>SilentUpdate</module>
+        <module>Enemy</module>
+        <module>Weapon</module>
+        <module>Map</module>
     </modules>
 
     <properties>

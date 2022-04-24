@@ -31,11 +31,13 @@
             <artifactId>LoneSurvivor-branding</artifactId>
             <version>${project.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>SilentUpdate</artifactId>
             <version>${project.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>GameEngine</artifactId>

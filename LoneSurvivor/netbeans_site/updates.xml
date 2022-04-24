@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!DOCTYPE module_updates PUBLIC "-//NetBeans//DTD Autoupdate Catalog 2.5//EN" "http://www.netbeans.org/dtds/autoupdate-catalog-2_5.dtd">
-<module_updates timestamp="16/07/21/23/04/2022">
+<module_updates timestamp="38/28/13/24/04/2022">
 
 
-
-<module autoload="true" codenamebase="org.netbeans.modules.autoupdate.services" distribution="org-netbeans-modules-autoupdate-services-RELEASE130.nbm" downloadsize="375547" homepage="http://www.netbeans.org/" license="6A01EA51" moduleauthor="" needsrestart="false" releasedate="2022/02/21" targetcluster="platform">
-    <manifest AutoUpdate-Essential-Module="true" AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.netbeans.modules.autoupdate.services" OpenIDE-Module-Display-Category="Infrastructure" OpenIDE-Module-Implementation-Version="13-00d6d969bf4d9b14e7406c9ee9cc13a61dc39655" OpenIDE-Module-Java-Dependencies="Java &gt; 1.8" OpenIDE-Module-Long-Description="The AutoUpdate feature provides several services: download and install available updates of installed modules, search and install new modules from subscribed Update Centers, view and manage the modules." OpenIDE-Module-Module-Dependencies="org.netbeans.api.progress/1 &gt; 1.59, org.netbeans.bootstrap/1 &gt; 2.74, org.netbeans.core.startup/1 &gt; 1.60, org.netbeans.core.startup.base &gt; 1.60, org.openide.filesystems &gt; 9.0, org.openide.modules &gt; 7.25, org.openide.util &gt; 9.3, org.openide.util.lookup &gt; 8.0, org.openide.util.ui &gt; 9.3" OpenIDE-Module-Name="Auto Update Services" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Support for searching for module updates on Update Center and for downloading and installing modules" OpenIDE-Module-Specification-Version="1.70"/>
-    
-</module>
 
 <module codenamebase="org.openide.util" distribution="org-openide-util-RELEASE130.nbm" downloadsize="210443" homepage="http://www.netbeans.org/" license="6A01EA51" moduleauthor="" needsrestart="false" releasedate="2022/02/21" targetcluster="platform">
     <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.openide.util" OpenIDE-Module-Display-Category="Infrastructure" OpenIDE-Module-Implementation-Version="13-00d6d969bf4d9b14e7406c9ee9cc13a61dc39655" OpenIDE-Module-Java-Dependencies="Java &gt; 1.8" OpenIDE-Module-Long-Description="Various helper methods and basic concept definitions including lookup, parallel execution and branding support." OpenIDE-Module-Module-Dependencies="org.openide.util.lookup &gt; 8.14" OpenIDE-Module-Name="Base Utilities API" OpenIDE-Module-Short-Description="Base Utilities API." OpenIDE-Module-Specification-Version="9.23"/>
@@ -20,8 +15,8 @@
     
 </module>
 
-<module codenamebase="group14.Common" distribution="Common-1.0-SNAPSHOT.nbm" downloadsize="8318" license="CEB166E5" needsrestart="false" releasedate="2022/04/23" targetcluster="lonesurvivor">
-    <manifest OpenIDE-Module="group14.Common" OpenIDE-Module-Display-Category="group14" OpenIDE-Module-Implementation-Version="1.0-20220423" OpenIDE-Module-Long-Description="&lt;undefined&gt;" OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.43, org.openide.modules &gt; 7.63, org.openide.util.ui &gt; 9.24" OpenIDE-Module-Name="Common" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="&lt;undefined&gt;" OpenIDE-Module-Specification-Version="1.0"/>
+<module codenamebase="group14.Common" distribution="Common-1.0-SNAPSHOT.nbm" downloadsize="9992" license="CEB166E5" needsrestart="false" releasedate="2022/04/24" targetcluster="lonesurvivor">
+    <manifest OpenIDE-Module="group14.Common" OpenIDE-Module-Display-Category="group14" OpenIDE-Module-Implementation-Version="1.0-20220424" OpenIDE-Module-Long-Description="&lt;undefined&gt;" OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.43, org.openide.modules &gt; 7.63, org.openide.util.ui &gt; 9.24" OpenIDE-Module-Name="Common" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="&lt;undefined&gt;" OpenIDE-Module-Specification-Version="1.0"/>
     
 </module>
 
@@ -35,28 +30,13 @@
     
 </module>
 
-<module codenamebase="group14.GameEngine" distribution="GameEngine-1.0-SNAPSHOT.nbm" downloadsize="8299063" license="CEB166E5" needsrestart="false" releasedate="2022/04/23" targetcluster="lonesurvivor">
-    <manifest OpenIDE-Module="group14.GameEngine" OpenIDE-Module-Display-Category="group14" OpenIDE-Module-Implementation-Version="1.0-20220423" OpenIDE-Module-Long-Description="&lt;undefined&gt;" OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.43, org.openide.modules &gt; 7.63, org.openide.util &gt; 9.23, org.openide.util.lookup &gt; 8.49, group14.Common &gt; 1.0" OpenIDE-Module-Name="GameEngine" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="&lt;undefined&gt;" OpenIDE-Module-Specification-Version="1.0"/>
+<module codenamebase="group14.GameEngine" distribution="GameEngine-1.0-SNAPSHOT.nbm" downloadsize="8299706" license="CEB166E5" needsrestart="false" releasedate="2022/04/24" targetcluster="lonesurvivor">
+    <manifest OpenIDE-Module="group14.GameEngine" OpenIDE-Module-Display-Category="group14" OpenIDE-Module-Implementation-Version="1.0-20220424" OpenIDE-Module-Long-Description="&lt;undefined&gt;" OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.43, org.openide.modules &gt; 7.63, org.openide.util &gt; 9.23, org.openide.util.lookup &gt; 8.49, group14.Common &gt; 1.0" OpenIDE-Module-Name="GameEngine" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="&lt;undefined&gt;" OpenIDE-Module-Specification-Version="1.0"/>
     
 </module>
 
-<module autoload="true" codenamebase="org.netbeans.api.io" distribution="org-netbeans-api-io-RELEASE130.nbm" downloadsize="43261" homepage="http://www.netbeans.org/" license="6A01EA51" moduleauthor="" needsrestart="false" releasedate="2022/02/21" targetcluster="platform">
-    <manifest AutoUpdate-Essential-Module="true" AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.netbeans.api.io" OpenIDE-Module-Display-Category="Infrastructure" OpenIDE-Module-Implementation-Version="13-00d6d969bf4d9b14e7406c9ee9cc13a61dc39655" OpenIDE-Module-Java-Dependencies="Java &gt; 1.8" OpenIDE-Module-Long-Description="API classes for creating output panes (e.g. tabs in output window) and for writing data into them.&#10;SPI for custom implementations of output window." OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.25, org.netbeans.api.intent &gt; 1.0, org.openide.util &gt; 9.3, org.openide.util.lookup &gt; 8.26" OpenIDE-Module-Name="I/O API and SPI" OpenIDE-Module-Recommends="org.netbeans.spi.io.InputOutputProvider" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="APIs and SPIs related to displaying output." OpenIDE-Module-Specification-Version="1.18"/>
-    
-</module>
-
-<module autoload="true" codenamebase="org.openide.io" distribution="org-openide-io-RELEASE130.nbm" downloadsize="52644" homepage="http://www.netbeans.org/" license="6A01EA51" moduleauthor="" needsrestart="false" releasedate="2022/02/21" targetcluster="platform">
-    <manifest AutoUpdate-Essential-Module="true" AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.openide.io" OpenIDE-Module-Display-Category="Infrastructure" OpenIDE-Module-Implementation-Version="13-00d6d969bf4d9b14e7406c9ee9cc13a61dc39655" OpenIDE-Module-Java-Dependencies="Java &gt; 1.8" OpenIDE-Module-Long-Description="Contains classes from org.openide.windows.* relating to creating output tabs, displaying output, and hyperlinking it." OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.15, org.netbeans.api.intent &gt; 1.0, org.netbeans.api.io &gt; 1.0, org.openide.util &gt; 9.3, org.openide.util.lookup &gt; 8.0" OpenIDE-Module-Name="I/O APIs - Swing" OpenIDE-Module-Recommends="org.openide.windows.IOProvider, org.openide.windows.IOContainer$Provider" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Open APIs relating to displaying output." OpenIDE-Module-Specification-Version="1.64"/>
-    
-</module>
-
-<module autoload="true" codenamebase="org.netbeans.api.intent" distribution="org-netbeans-api-intent-RELEASE130.nbm" downloadsize="39371" homepage="http://www.netbeans.org/" license="6A01EA51" moduleauthor="" needsrestart="false" releasedate="2022/02/21" targetcluster="platform">
-    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.netbeans.api.intent" OpenIDE-Module-Display-Category="Infrastructure" OpenIDE-Module-Implementation-Version="13-00d6d969bf4d9b14e7406c9ee9cc13a61dc39655" OpenIDE-Module-Java-Dependencies="Java &gt; 1.8" OpenIDE-Module-Long-Description="API for invoking intended operations (described by suitable type of object, e.g. URI) by some of registered handlers.&#10;SPI for handlers of possible intended operations." OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.40, org.openide.filesystems &gt; 9.1, org.openide.util &gt; 9.3, org.openide.util.lookup &gt; 8.26" OpenIDE-Module-Name="Intent API" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Performing intended operations by suitable handlers" OpenIDE-Module-Specification-Version="1.17"/>
-    
-</module>
-
-<module codenamebase="group14.LoneSurvivor.branding" distribution="LoneSurvivor-branding-1.0-SNAPSHOT.nbm" downloadsize="5762" license="CEB166E5" needsrestart="false" releasedate="2022/04/23" targetcluster="lonesurvivor">
-    <manifest AutoUpdate-Essential-Module="true" OpenIDE-Module="group14.LoneSurvivor.branding" OpenIDE-Module-Display-Category="group14" OpenIDE-Module-Implementation-Version="1.0-20220423" OpenIDE-Module-Long-Description="&lt;undefined&gt;" OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.43" OpenIDE-Module-Name="LoneSurvivor-branding" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="&lt;undefined&gt;" OpenIDE-Module-Specification-Version="1.0"/>
+<module codenamebase="group14.LoneSurvivor.branding" distribution="LoneSurvivor-branding-1.0-SNAPSHOT.nbm" downloadsize="5763" license="CEB166E5" needsrestart="false" releasedate="2022/04/24" targetcluster="lonesurvivor">
+    <manifest AutoUpdate-Essential-Module="true" OpenIDE-Module="group14.LoneSurvivor.branding" OpenIDE-Module-Display-Category="group14" OpenIDE-Module-Implementation-Version="1.0-20220424" OpenIDE-Module-Long-Description="&lt;undefined&gt;" OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.43" OpenIDE-Module-Name="LoneSurvivor-branding" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="&lt;undefined&gt;" OpenIDE-Module-Specification-Version="1.0"/>
     
 </module>
 
@@ -75,18 +55,8 @@
     
 </module>
 
-<module codenamebase="group14.Player" distribution="Player-1.0-SNAPSHOT.nbm" downloadsize="4829" license="CEB166E5" needsrestart="false" releasedate="2022/04/23" targetcluster="lonesurvivor">
-    <manifest OpenIDE-Module="group14.Player" OpenIDE-Module-Display-Category="group14" OpenIDE-Module-Implementation-Version="1.0-20220423" OpenIDE-Module-Long-Description="&lt;undefined&gt;" OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.43, group14.Common &gt; 1.0" OpenIDE-Module-Name="Player" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="&lt;undefined&gt;" OpenIDE-Module-Specification-Version="1.0"/>
-    
-</module>
-
-<module autoload="true" codenamebase="org.netbeans.api.progress" distribution="org-netbeans-api-progress-RELEASE130.nbm" downloadsize="56023" homepage="http://www.netbeans.org/" license="6A01EA51" moduleauthor="" needsrestart="false" releasedate="2022/02/21" targetcluster="platform">
-    <manifest AutoUpdate-Essential-Module="true" AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.netbeans.api.progress/1" OpenIDE-Module-Display-Category="Infrastructure" OpenIDE-Module-Implementation-Version="13-00d6d969bf4d9b14e7406c9ee9cc13a61dc39655" OpenIDE-Module-Java-Dependencies="Java &gt; 1.8" OpenIDE-Module-Long-Description="Lets modules register long-running tasks or processes in a central place." OpenIDE-Module-Module-Dependencies="org.openide.modules &gt; 7.44, org.openide.util.ui &gt; 9.3, org.openide.util &gt; 9.3, org.openide.util.lookup &gt; 8.0" OpenIDE-Module-Name="Progress API" OpenIDE-Module-Recommends="org.netbeans.modules.progress.spi.ProgressUIWorkerProvider, org.netbeans.modules.progress.spi.RunOffEDTProvider" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Task progress visualization APIs." OpenIDE-Module-Specification-Version="1.63"/>
-    
-</module>
-
-<module codenamebase="group14.SilentUpdate" distribution="SilentUpdate-1.0-SNAPSHOT.nbm" downloadsize="10933" license="CEB166E5" needsrestart="false" releasedate="2022/04/23" targetcluster="lonesurvivor">
-    <manifest OpenIDE-Module="group14.SilentUpdate" OpenIDE-Module-Display-Category="Infrastructure" OpenIDE-Module-Implementation-Version="1.0-20220423" OpenIDE-Module-Long-Description="A service installing updates of your NetBeans Platform Application with as few as possible user's interactions." OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.43, org.openide.modules &gt; 7.63, org.netbeans.modules.autoupdate.services &gt; 1.70, org.openide.io &gt; 1.64, org.openide.util &gt; 9.23" OpenIDE-Module-Name="Silent Update" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Silent Update of Application" OpenIDE-Module-Specification-Version="1.0"/>
+<module codenamebase="group14.Player" distribution="Player-1.0-SNAPSHOT.nbm" downloadsize="5461" license="CEB166E5" needsrestart="false" releasedate="2022/04/24" targetcluster="lonesurvivor">
+    <manifest OpenIDE-Module="group14.Player" OpenIDE-Module-Display-Category="group14" OpenIDE-Module-Implementation-Version="1.0-20220424" OpenIDE-Module-Long-Description="&lt;undefined&gt;" OpenIDE-Module-Module-Dependencies="org.netbeans.api.annotations.common/1 &gt; 1.43, group14.Common &gt; 1.0" OpenIDE-Module-Name="Player" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="&lt;undefined&gt;" OpenIDE-Module-Specification-Version="1.0"/>
     
 </module>
 

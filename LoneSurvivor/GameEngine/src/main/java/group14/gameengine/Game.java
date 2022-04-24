@@ -62,7 +62,6 @@ public class Game implements ApplicationListener{
         gameData.setDeltaTime(Gdx.graphics.getDeltaTime());
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         gameData.getInput().update();
-        gameData.getInput().updateMouse(Gdx.input.getX(), gameData.getSceneHeight() - Gdx.input.getY());
         for (IUpdate update : lookup.lookupAll(IUpdate.class)) {
             update.update(gameData, world);
         }

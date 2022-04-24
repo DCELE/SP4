@@ -12,7 +12,7 @@ public class Input {
 
     private static boolean[] keys;
     private static boolean[] pressedKeys;
-    private static final int NUMBEROFKEYS = 10;
+    private static final int NUMBEROFKEYS = 8;
     public static final int UP = 0;
     public static final int LEFT = 1;
     public static final int DOWN = 2;
@@ -21,11 +21,7 @@ public class Input {
     public static final int ESCAPE = 5;
     public static final int SPACE = 6;
     public static final int SHIFT = 7;
-    public static final int R = 8;
-    public static final int MOUSELEFT = 9;
-
-    public static float mouseX;
-    public static float mouseY;
+    
 
     public Input() {
         this.keys = new boolean[NUMBEROFKEYS];
@@ -38,10 +34,6 @@ public class Input {
         }
     }
 
-    public void updateMouse(float x, float y) {
-        mouseX = x;
-        mouseY = y;
-    }
 
     public void setKeyStatus(int key, boolean pressed) {
         keys[key] = pressed;

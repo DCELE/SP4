@@ -18,6 +18,9 @@ public class Entity {
     private HashMap<Class, Component> components;
 
     private String image;
+    private float roomHeight;
+    private float roomWidth;
+   
 
     public Entity() {
         this.id = UUID.randomUUID();
@@ -40,6 +43,24 @@ public class Entity {
     public void setImage(String image) {
         this.image = image;
     }
+    
+    public float getRoomHeight(){
+        return roomHeight;
+    }
+    
+     public void setRoomHeight(float roomHeight) {
+        this.roomHeight = roomHeight;
+    }
+    
+    public float getRoomWidth(){
+        return roomWidth;
+    }
+    
+    public void setRoomWidth(float roomWidth) {
+        this.roomWidth = roomWidth;
+    }
+
+  
 
     public void addComponent(Component component) {
         this.components.put(component.getClass(), component);

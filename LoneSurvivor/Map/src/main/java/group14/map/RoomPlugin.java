@@ -42,9 +42,11 @@ public class RoomPlugin implements IPlugin{
         doors[0][2] = doors[0][0] + wallWidth;
         doors[0][3] = startY;
 
-        Entity room = new Room("room.png");
-
-      
+        Entity room = new Room("room.png", gameData.getSceneHeight(),gameData.getSceneWidth());
+        Position roomPosition = new Position(gameData.getSceneWidth()/2, gameData.getSceneHeight()/2, 3.1415f / 2);
+        
+        
+        room.addComponent(roomPosition);
         return room;
     }
     

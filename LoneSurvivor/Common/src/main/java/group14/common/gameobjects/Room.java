@@ -6,8 +6,11 @@ public class Room extends Entity{
         super();
     }
 
-    public Room(String image) {
+    public Room(String image, float roomHeight, float roomWidth) {
+       
         super(image);
     }
     
+    
+  
 }

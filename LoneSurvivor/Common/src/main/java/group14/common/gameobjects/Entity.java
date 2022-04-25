@@ -20,6 +20,8 @@ public class Entity {
     private String image;
     private float roomHeight;
     private float roomWidth;
+    private float[] shapeX = new float[4];
+    private float[] shapeY = new float[4];
    
 
     public Entity() {
@@ -58,6 +60,22 @@ public class Entity {
     
     public void setRoomWidth(float roomWidth) {
         this.roomWidth = roomWidth;
+    }
+    
+    public float[] getShapeX() {
+        return shapeX;
+    }
+    
+    public float[] getShapeY() {
+        return shapeY;
+    }
+    
+    public void setShapeX(float[] shapeX) {
+        this.shapeX = shapeX;
+    }
+    
+    public void setShapeY(float[] shapeY) {
+        this.shapeY = shapeY;
     }
 
   

@@ -21,6 +21,11 @@ public class Position implements Component {
         this.y = y;
         this.radians = radians;
     }
+    
+    public Position(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public float getX() {
         return x;

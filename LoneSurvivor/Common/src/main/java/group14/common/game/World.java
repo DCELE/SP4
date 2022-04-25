@@ -5,6 +5,7 @@
 package group14.common.game;
 
 import group14.common.gameobjects.Entity;
+import group14.common.gameobjects.Weapon;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -50,4 +51,5 @@ public class World {
     public Entity getEntity(String ID) {
         return this.entities.get(ID);
     }
+
 }

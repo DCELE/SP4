@@ -12,6 +12,7 @@ import group14.common.gameobjects.components.Movement;
 import group14.common.gameobjects.components.Position;
 import group14.common.gameobjects.components.Timer;
 import group14.common.services.IUpdate;
+import group14.common.services.WeaponSPI;
 import org.openide.util.lookup.ServiceProvider;
 import org.openide.util.lookup.ServiceProviders;
 
@@ -20,27 +21,48 @@ import org.openide.util.lookup.ServiceProviders;
  * @author Dilara
  */
 @ServiceProviders(value = {
-    @ServiceProvider(service = IUpdate.class)})
+    @ServiceProvider(service = IUpdate.class), 
+    @ServiceProvider(service = WeaponSPI.class) })
 
-public class WeaponController implements IUpdate {
+public class WeaponController implements IUpdate, WeaponSPI {
 
     @Override
     public void update(GameData gameData, World world) {
         for (Entity weapon : world.getEntities(Weapon.class)) {
-
-            Position position = weapon.getComponent(Position.class);
-            Movement movement = weapon.getComponent(Movement.class);
-            Timer timer = weapon.getComponent(Timer.class);
-            movement.setUp(true);
-            if (timer.getExpiration() < 0) {
-                world.removeEntity(weapon);
-            }
-            timer.update(weapon, gameData);
-            movement.update(weapon, gameData);
-            position.update(weapon, gameData);
+            Weapon newWeapon = new Weapon();
+//            Position position = weapon.getComponent(Position.class);
+//            Movement movement = weapon.getComponent(Movement.class);
+////            Timer timer = weapon.getComponent(Timer.class);
+////            movement.setUp(false);
+////            if (timer.getExpiration() < 0) {
+////                world.removeEntity(weapon);
+////            }
+////            timer.update(weapon, gameData);
+//            movement.update(weapon, gameData);
+//            position.update(weapon, gameData);
 
 //            setShape(weapon);
         }
+    }
+
+    @Override
+    public Entity createWeapon(Entity e, GameData gameData) {
+        //float deacceleration = 10;
+        float speed = 300;
+        //float rotationSpeed = 5;
+        float radius = 8;
+        
+        
+        Entity weapon = new Weapon("weapon.png");
+        Position weaponPosition = new Position(gameData.getSceneWidth()/2, gameData.getSceneHeight()/2, 3.1415f / 2);
+//        
+//        Movement playerMovement = new Movement(speed);
+//        
+//        
+//        
+        weapon.addComponent(weaponPosition);
+//        player.addComponent(playerMovement);
+        return weapon;
     }
     
 }

@@ -38,23 +38,23 @@ public class WeaponPlugin implements IPlugin {
         }
     }
     
-     private Entity createWeapon(GameData gameData) {
-        //float deacceleration = 10;
-        float speed = 300;
-        //float rotationSpeed = 5;
-        float radius = 8;
-        
-        
-        Entity weapon = new Weapon("weapon.png");
-//        Position playerPosition = new Position(gameData.getSceneWidth()/2, gameData.getSceneHeight()/2, 3.1415f / 2);
-//        
-//        Movement playerMovement = new Movement(speed);
+//     private Entity createWeapon(GameData gameData) {
+//        //float deacceleration = 10;
+//        float speed = 300;
+//        //float rotationSpeed = 5;
+//        float radius = 8;
 //        
 //        
-//        
-//        weapon.addComponent(playerPosition);
-//        player.addComponent(playerMovement);
-        return weapon;
-    } 
+//        Entity weapon = new Weapon("weapon.png");
+////        Position playerPosition = new Position(gameData.getSceneWidth()/2, gameData.getSceneHeight()/2, 3.1415f / 2);
+////        
+////        Movement playerMovement = new Movement(speed);
+////        
+////        
+////        
+////        weapon.addComponent(playerPosition);
+////        player.addComponent(playerMovement);
+//        return weapon;
+//    } 
     
 }

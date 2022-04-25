@@ -8,11 +8,13 @@ import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Player;
+import group14.common.gameobjects.Weapon;
 import group14.common.gameobjects.components.Movement;
 import group14.common.gameobjects.components.Position;
 import group14.common.services.IPlugin;
 import org.openide.util.lookup.ServiceProvider;
 import org.openide.util.lookup.ServiceProviders;
+
 
 /**
  *
@@ -51,11 +53,13 @@ public class PlayerPlugin implements IPlugin{
         Position playerPosition = new Position(gameData.getSceneWidth()/2, gameData.getSceneHeight()/2, 3.1415f / 2);
         
         Movement playerMovement = new Movement(speed);
+//        Weapon playerWeapon = new Weapon();
         
         
         
         player.addComponent(playerPosition);
         player.addComponent(playerMovement);
+//        player.addComponent(playerWeapon);
         return player;
     } 
     

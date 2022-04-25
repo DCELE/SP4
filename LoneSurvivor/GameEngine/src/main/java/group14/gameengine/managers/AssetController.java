@@ -30,7 +30,7 @@ public class AssetController {
     private void loadAssets() {
         assetManager.load("assets/player.png", Texture.class);
         assetManager.load("assets/enemy.png", Texture.class);
-
+        assetManager.load("assets/room.png", Texture.class);
     }
 
     public Texture getAsset(String name) {

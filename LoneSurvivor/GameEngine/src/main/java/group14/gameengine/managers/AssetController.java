@@ -27,7 +27,7 @@ public class AssetController {
         this.sr = new ShapeRenderer();
     }
 
-    private void loadAssets() {
+    private void loadAssets() {      
         assetManager.load("assets/player.png", Texture.class);
         assetManager.load("assets/enemy.png", Texture.class);
         assetManager.load("assets/room.png", Texture.class);

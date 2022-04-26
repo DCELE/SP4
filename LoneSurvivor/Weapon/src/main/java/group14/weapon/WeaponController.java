@@ -29,23 +29,6 @@ public class WeaponController implements IUpdate, WeaponSPI {
     @Override
     public void update(GameData gameData, World world) {
         for (Entity weapon : world.getEntities(Weapon.class)) {
-<<<<<<< HEAD
-            
-            Weapon newweapon = new Weapon("weapon.png");
-            
-            Position position = weapon.getComponent(Position.class);
-            Movement movement = weapon.getComponent(Movement.class);
-            Timer timer = weapon.getComponent(Timer.class);
-            movement.setUp(true);
-            if (timer.getExpiration() < 0) {
-                world.removeEntity(weapon);
-            }
-            timer.process(gameData, weapon);
-            movement.process(gameData, weapon);
-            position.process(gameData, weapon);
-
-            setImage("weapon.png");
-=======
             Weapon newWeapon = new Weapon();
 //            Position position = weapon.getComponent(Position.class);
 //            Movement movement = weapon.getComponent(Movement.class);
@@ -57,26 +40,17 @@ public class WeaponController implements IUpdate, WeaponSPI {
 ////            timer.update(weapon, gameData);
 //            movement.update(weapon, gameData);
 //            position.update(weapon, gameData);
->>>>>>> parent of c3ea9fd... weapontemp
 
 //            setShape(weapon);
         }
     }
 
     @Override
-<<<<<<< HEAD
-    public Entity createWeapon(Entity entity, GameData gameData) {
-//        //float deacceleration = 10;
-//        float speed = 300;
-//        //float rotationSpeed = 5;
-//        float radius = 8;
-=======
     public Entity createWeapon(Entity e, GameData gameData) {
         //float deacceleration = 10;
         float speed = 300;
         //float rotationSpeed = 5;
         float radius = 8;
->>>>>>> parent of c3ea9fd... weapontemp
         
         
         Entity weapon = new Weapon("weapon.png");

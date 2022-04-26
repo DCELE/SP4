@@ -126,6 +126,7 @@ public class Movement implements Component{
 
         dx = 0;
         dy = 0;
+        
     }
     
     

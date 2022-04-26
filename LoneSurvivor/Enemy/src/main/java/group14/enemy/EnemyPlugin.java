@@ -2,6 +2,7 @@ package group14.enemy;
 
 import group14.common.game.GameData;
 import group14.common.game.World;
+import group14.common.gameobjects.Enemy;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.components.Position;
 import group14.common.services.IPlugin;
@@ -25,7 +26,7 @@ public class EnemyPlugin implements IPlugin{
 
     @Override
     public void stop(GameData gameData, World world) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    
     }
 
     private Entity createEnemy(GameData gameData) {
@@ -37,7 +38,7 @@ public class EnemyPlugin implements IPlugin{
         float radius = 8;
         
         
-        Entity enemy = new Entity("enemy.png");
+        Entity enemy = new Enemy("enemy.png");
         Position enemyPosition = new Position(gameData.getSceneWidth()/3, gameData.getSceneHeight()/3, 3.1415f / 2);
         
         

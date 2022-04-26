@@ -50,7 +50,7 @@ public class PlayerController implements IUpdate, WeaponSPI {
 
             if (gameData.getInput().isDown(SPACE)) {
                 
-                Entity newWeapon = Lookup.getDefault().lookup(WeaponSPI.class).createWeapon(player, gameData);
+            Entity newWeapon = Lookup.getDefault().lookup(WeaponSPI.class).createWeapon(player, gameData);
                 world.addEntity(newWeapon);
             }
 

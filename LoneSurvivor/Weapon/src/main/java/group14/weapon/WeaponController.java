@@ -32,6 +32,8 @@ public class WeaponController implements IEntityProcessingService, WeaponSPI {
     public void process(GameData gameData, World world) {
         for (Entity weapon : world.getEntities(Weapon.class)) {
             
+            Weapon newweapon = new Weapon("weapon.png");
+            
             Position position = weapon.getComponent(Position.class);
             Movement movement = weapon.getComponent(Movement.class);
             Timer timer = weapon.getComponent(Timer.class);
@@ -49,7 +51,7 @@ public class WeaponController implements IEntityProcessingService, WeaponSPI {
     }
 
     @Override
-    public Entity createWeapon(Entity e, GameData gameData) {
+    public Entity createWeapon(Entity entity, GameData gameData) {
 //        //float deacceleration = 10;
 //        float speed = 300;
 //        //float rotationSpeed = 5;

@@ -11,7 +11,7 @@ import group14.common.gameobjects.Weapon;
 import group14.common.gameobjects.components.Movement;
 import group14.common.gameobjects.components.Position;
 import group14.common.gameobjects.components.Timer;
-import group14.common.services.IUpdate;
+import group14.common.services.IEntityProcessingService;
 import group14.common.services.WeaponSPI;
 import org.openide.util.lookup.ServiceProvider;
 import org.openide.util.lookup.ServiceProviders;
@@ -21,36 +21,39 @@ import org.openide.util.lookup.ServiceProviders;
  * @author Dilara
  */
 @ServiceProviders(value = {
-    @ServiceProvider(service = IUpdate.class), 
+    @ServiceProvider(service = IEntityProcessingService.class), 
     @ServiceProvider(service = WeaponSPI.class) })
 
-public class WeaponController implements IUpdate, WeaponSPI {
+public class WeaponController implements IEntityProcessingService, WeaponSPI {
+
+    private String image;
 
     @Override
-    public void update(GameData gameData, World world) {
+    public void process(GameData gameData, World world) {
         for (Entity weapon : world.getEntities(Weapon.class)) {
-            Weapon newWeapon = new Weapon();
-//            Position position = weapon.getComponent(Position.class);
-//            Movement movement = weapon.getComponent(Movement.class);
-////            Timer timer = weapon.getComponent(Timer.class);
-////            movement.setUp(false);
-////            if (timer.getExpiration() < 0) {
-////                world.removeEntity(weapon);
-////            }
-////            timer.update(weapon, gameData);
-//            movement.update(weapon, gameData);
-//            position.update(weapon, gameData);
+            
+            Position position = weapon.getComponent(Position.class);
+            Movement movement = weapon.getComponent(Movement.class);
+            Timer timer = weapon.getComponent(Timer.class);
+            movement.setUp(true);
+            if (timer.getExpiration() < 0) {
+                world.removeEntity(weapon);
+            }
+            timer.process(gameData, weapon);
+            movement.process(gameData, weapon);
+            position.process(gameData, weapon);
 
-//            setShape(weapon);
+            setImage("weapon.png");
+
         }
     }
 
     @Override
     public Entity createWeapon(Entity e, GameData gameData) {
-        //float deacceleration = 10;
-        float speed = 300;
-        //float rotationSpeed = 5;
-        float radius = 8;
+//        //float deacceleration = 10;
+//        float speed = 300;
+//        //float rotationSpeed = 5;
+//        float radius = 8;
         
         
         Entity weapon = new Weapon("weapon.png");
@@ -64,5 +67,12 @@ public class WeaponController implements IUpdate, WeaponSPI {
 //        player.addComponent(playerMovement);
         return weapon;
     }
+
+    private void setImage(String image) {
+        this.image = image;
+        
+    }
     
 }
+        
+

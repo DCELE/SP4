@@ -65,7 +65,10 @@ public class PlayerController implements IUpdate, WeaponSPI {
 
     @Override
     public Entity createWeapon(Entity e, GameData gameData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Weapon weapon = new Weapon();
+        
+        return weapon;
     }
+
     
 }

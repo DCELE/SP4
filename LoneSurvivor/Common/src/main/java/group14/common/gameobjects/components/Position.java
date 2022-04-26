@@ -11,7 +11,7 @@ import group14.common.gameobjects.Entity;
  *
  * @author Dilara
  */
-public class Position implements Component {
+public class Position implements Component, EntityPart {
 
     private float x, y;
     private float radians;
@@ -48,6 +48,11 @@ public class Position implements Component {
 
     @Override
     public void update(Entity entity, GameData gameData) {
+    }
+
+    @Override
+    public void process(GameData gameData, Entity entity) {
+       
     }
 
 }

@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
+import group14.common.gameobjects.Tile;
 import group14.common.services.IPlugin;
 import group14.common.services.IUpdate;
 import group14.gameengine.managers.AssetController;
@@ -87,8 +88,13 @@ public class Game implements ApplicationListener{
     
     private void draw() {
     spriteBatch.begin();
+    for (Entity entity : world.getEntities(Tile.class)) {
+            assetController.drawEntity(entity, this.spriteBatch);
+    }
     for (Entity entity : world.getEntities()) {
-        assetController.drawEntity(entity, this.spriteBatch);
+        if (!entity.getClass().equals(Tile.class)){
+            assetController.drawEntity(entity, this.spriteBatch);
+        }
     }
     spriteBatch.end();
     

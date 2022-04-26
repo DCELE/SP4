@@ -27,7 +27,7 @@ public class Room extends Entity{
     
     private Tile createTile(TileType tileType, int x, int y) {
         Tile tile = new Tile(tileType);
-        Position position = new Position(x * tileHeigth * 3, y * tileWidth * 3, 3.1415f / 2);
+        Position position = new Position(x * tileHeigth * 3 + tileHeigth * 3/2, y * tileWidth * 3 + tileWidth * 3/2, 3.1415f / 2);
         tile.addComponent(position);
         return tile;
     }

@@ -4,6 +4,7 @@ import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Room;
+import group14.common.gameobjects.Tile;
 import group14.common.gameobjects.TileType;
 import static group14.common.gameobjects.TileType.TILE;
 import group14.common.gameobjects.components.Position;
@@ -18,7 +19,7 @@ import org.openide.util.lookup.ServiceProviders;
 public class RoomPlugin implements IPlugin{
 
     
-    TileType[][] room = {{TILE, TILE, TILE,TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE},
+    TileType[][] roomTiles = {{TILE, TILE, TILE,TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE},
     {TILE, TILE, TILE,TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE},
     {TILE, TILE, TILE,TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE},
     {TILE, TILE, TILE,TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE, TILE},
@@ -34,18 +35,19 @@ public class RoomPlugin implements IPlugin{
     
     @Override
     public void start(GameData gameData, World world) {
-    Room room = new Room(world, room, 16, 16);
-    
+        Room room = new Room(world, roomTiles, 16, 16);
+        world.addEntity(room);
     }
-    
-    
-    
+   
     @Override
     public void stop(GameData gameData, World world) {
-    
+        for (Entity tile : world.getEntities(Tile.class)) {
+            world.removeEntity(tile);
+        }
+        for (Entity tile : world.getEntities(Room.class)) {
+            world.removeEntity(tile);
+        }
+        
     }
-    
-   
-   
     
 }

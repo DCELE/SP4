@@ -11,7 +11,7 @@ import group14.common.gameobjects.Entity;
  *
  * @author frederikkelan
  */
-public class Sight implements EntityPart {
+public class Sight implements Component {
 
     private float expiration;
     private float sightLimit;
@@ -39,9 +39,10 @@ public class Sight implements EntityPart {
         }
     }
 
+
     @Override
-    public void process(GameData gameData, Entity entity) {
-        if(expiration > 0){
+    public void update(Entity entity, GameData gameData) {
+    if(expiration > 0){
             reduceExpiration(gameData.getDeltaTime());
         }
     }

@@ -55,8 +55,8 @@ public class EnemyController implements IUpdate {
             
             movement.update(enemy, gameData);
             position.update(enemy, gameData);
-            sight.process(gameData, enemy);
-            life.process(gameData, enemy);
+            sight.update(enemy, gameData);
+            life.update(enemy, gameData);
             
             if(life.getLife() <= 0){
                 world.removeEntity(enemy);

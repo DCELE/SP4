@@ -11,7 +11,7 @@ import group14.common.gameobjects.Entity;
  *
  * @author frederikkelan
  */
-public class PlayerPart implements EntityPart{
+public class PlayerPart implements Component{
     
     private String name;
 
@@ -23,8 +23,9 @@ public class PlayerPart implements EntityPart{
         this.name = name;
     }
 
+
     @Override
-    public void process(GameData gameData, Entity entity) {
+    public void update(Entity entity, GameData gameData) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

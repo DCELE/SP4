@@ -11,7 +11,7 @@ import group14.common.gameobjects.Entity;
  *
  * @author frederikkelan
  */
-public class LifePart implements EntityPart {
+public class LifePart implements Component {
     
     private int life;
     private boolean isHit = false;
@@ -40,9 +40,10 @@ public class LifePart implements EntityPart {
         this.isHit = isHit;
     }
 
+
     @Override
-    public void process(GameData gameData, Entity entity) {
-        if (isHit) {
+    public void update(Entity entity, GameData gameData) {
+    if (isHit) {
             life = life - 1;
             isHit = false;
         }

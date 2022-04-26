@@ -1,9 +1,11 @@
 package group14.enemy;
 
+import group14.ai.AIEngine;
 import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.components.Position;
+import group14.common.gameobjects.components.Sight;
 import group14.common.services.IPlugin;
 
 import org.openide.util.lookup.ServiceProvider;
@@ -39,11 +41,11 @@ public class EnemyPlugin implements IPlugin{
         
         Entity enemy = new Entity("enemy.png");
         Position enemyPosition = new Position(gameData.getSceneWidth()/3, gameData.getSceneHeight()/3, 3.1415f / 2);
+        Sight enemySight = new Sight(500);
         
-        
-        
-        
+        enemy.addComponent(enemySight);
         enemy.addComponent(enemyPosition);
+        
         return enemy;
     }
 

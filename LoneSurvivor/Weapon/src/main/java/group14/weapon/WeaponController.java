@@ -24,17 +24,22 @@ import org.openide.util.lookup.ServiceProviders;
 
 public class WeaponController implements IUpdate{
     
+    float coolDown = 0.5f;
+    float timer = 0;
+    
     @Override
     public void update(GameData gameData, World world) {
     
+        if (timer > 0){
+            timer -= gameData.getDeltaTime();
+        }
         for (Entity player : world.getEntities(Player.class)) {
-            if (gameData.getInput().isPressed(SPACE)){
+            if (gameData.getInput().isDown(SPACE) && timer <=0){
+                timer = coolDown;
                 Position position = player.getComponent(Position.class);
                 Weapon weapon = new Weapon("weapon.png", position.getX(), position.getY(), 300, position.getRadians());
                 world.addEntity(weapon);
-                System.out.println("weapon test");
             }
-            System.out.println("weapon for test");
         }
         for (Entity weapon : world.getEntities(Weapon.class)) {
             Weapon currentWeapon = (Weapon)weapon;

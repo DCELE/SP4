@@ -13,7 +13,7 @@ import group14.common.gameobjects.Entity;
  *
  * @author frederikkelan
  */
-public class Timer implements Component, EntityPart {
+public class Timer implements Component {
     
     private float expiration;
 
@@ -35,14 +35,6 @@ public class Timer implements Component, EntityPart {
 
     @Override
     public void update(Entity entity, GameData gameData) {
-        if (expiration > 0) {
-            reduceExpiration(gameData.getDeltaTime());
-        }
-        
-    }
-    
-    @Override
-    public void process(GameData gameData, Entity entity) {
         if (expiration > 0) {
             reduceExpiration(gameData.getDeltaTime());
         }

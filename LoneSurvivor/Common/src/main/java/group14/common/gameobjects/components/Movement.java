@@ -12,7 +12,7 @@ import static java.lang.Math.sqrt;
  *
  * @author Dilara
  */
-public class Movement implements Component, EntityPart{
+public class Movement implements Component{
 
     
     private float dx, dy;
@@ -127,55 +127,9 @@ public class Movement implements Component, EntityPart{
         dx = 0;
         dy = 0;
     }
-
-    @Override
-    public void process(GameData gameData, Entity entity) {
-        Position position = entity.getComponent(Position.class);
-        float x = position.getX();
-        float y = position.getY();
-        float dt = gameData.getDeltaTime();
-
-       
-        // If pressing up or down, the player will move on the y axis           
-        if (up) {
-            dy += speed * dt;
-        } else if (down) {
-            dy -= speed * dt;
-        }
-        
-        // If pressing left or right, the player will move on the x axis
-        if (right) {
-            dx += speed * dt;
-        } else if (left) {
-            dx -= speed * dt;
-        }
-
-        // set position
-        x += dx;
-        if (x > gameData.getSceneWidth()) {
-            x = 0;
-        } else if (x < 0) {
-            x = gameData.getSceneWidth();
-        }
-
-        y += dy;
-        if (y > gameData.getSceneHeight()) {
-            y = 0;
-        } else if (y < 0) {
-            y = gameData.getSceneHeight();
-        }
-
-        position.setX(x);
-        position.setY(y);
-
-        dx = 0;
-        dy = 0;
-    }
+    
+    
+    
+    
     
 }
-    
-    
-    
-    
-    
-

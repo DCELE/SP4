@@ -44,8 +44,6 @@ public class WeaponController implements IUpdate {
                 Weapon weapon = new Weapon("weapon.png", position.getX(), position.getY(), 300, position.getRadians());
                 float heigth = 3 * 3;
                 float width = 3 * 3;
-                Collider weaponCollider = new Collider(heigth, width);
-                weapon.addComponent(weaponCollider);
                 world.addEntity(weapon);
             }
         }

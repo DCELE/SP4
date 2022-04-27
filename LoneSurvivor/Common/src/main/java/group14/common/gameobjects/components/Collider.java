@@ -15,6 +15,14 @@ public class Collider implements Component {
 
     float height;
     float width;
+
+    public float getHeight() {
+        return height;
+    }
+
+    public float getWidth() {
+        return width;
+    }
     
     public Collider (float height, float width) {
         this.height = height;

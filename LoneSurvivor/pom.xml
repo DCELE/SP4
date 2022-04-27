@@ -68,6 +68,8 @@
         <module>Enemy</module>
         <module>Weapon</module>
         <module>Map</module>
+        <module>AI</module>
+        <module>Collision</module>
     </modules>
 
     <properties>

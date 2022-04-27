@@ -12,7 +12,18 @@ public enum TileType {
     
     
     
-    TILE(0, "tile.png");
+    TILE1(0, "tile000.png"),
+    TILE2(0, "tile001.png"),
+    TILE3(0, "tile002.png"),
+    TILE4(0, "tile003.png"),
+    TILE5(0, "tile004.png"),
+    TILE6(0, "tile005.png"),
+    TILE7(0, "tile006.png"),
+    TILE8(0, "tile007.png"),
+    TILE9(0, "tile008.png"),
+    TILE10(0, "tile009.png"),
+    TILE11(0, "tile010.png"),
+    TILE12(0, "tile011.png");
     
     
     private int id;

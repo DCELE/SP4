@@ -24,7 +24,7 @@ import org.openide.util.lookup.ServiceProviders;
 
 public class WeaponController implements IUpdate{
     
-    float coolDown = 0.5f;
+    float coolDown = 0.3f;
     float timer = 0;
     
     @Override

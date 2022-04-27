@@ -31,28 +31,24 @@ public class PlayerController implements IUpdate {
 
     @Override
     public void update(GameData gameData, World world) {
-        //System.out.println(world.getEntities(Player.class).size());
+        
         for (Entity player : world.getEntities(Player.class)) {
             Position position = player.getComponent(Position.class);
             Movement movement = player.getComponent(Movement.class);
-            //LifePart lifePart = player.getPart(LifePart.class);
 
             movement.setLeft(gameData.getInput().isDown(LEFT));
             movement.setRight(gameData.getInput().isDown(RIGHT));
             movement.setUp(gameData.getInput().isDown(UP));
             movement.setDown(gameData.getInput().isDown(DOWN));
 
-            //if (gameData.getInput().isDown(SPACE)) {
-            //    Entity bullet = Lookup.getDefault().lookup(BulletSPI.class).createBullet(player, gameData);
-            //    world.addEntity(bullet);
-            //}
-
+            
+            
+            
+            
+            
             movement.update(player, gameData);
             position.update(player, gameData);
-            //lifePart.process(gameData, player);
-
-            //updateShape(player);
-
+       
         }
     }
     

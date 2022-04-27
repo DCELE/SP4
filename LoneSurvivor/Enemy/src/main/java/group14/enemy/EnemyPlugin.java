@@ -4,6 +4,8 @@ import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Enemy;
 import group14.common.gameobjects.Entity;
+import group14.common.gameobjects.components.Collider;
+import group14.common.gameobjects.components.Health;
 import group14.common.gameobjects.components.Position;
 import group14.common.services.IPlugin;
 
@@ -36,15 +38,18 @@ public class EnemyPlugin implements IPlugin{
         float maxSpeed = 300;
         //float rotationSpeed = 5;
         float radius = 8;
-        
+        float health = 1;
+        float heigth = 16 * 3;
+        float width = 11 * 3;
         
         Entity enemy = new Enemy("enemy.png");
         Position enemyPosition = new Position(gameData.getSceneWidth()/3, gameData.getSceneHeight()/3, 3.1415f / 2);
-        
-        
-        
+        Health enemyHealth = new Health(health);
+        Collider enemyCollider = new Collider(heigth, width);
         
         enemy.addComponent(enemyPosition);
+        enemy.addComponent(enemyHealth);
+        enemy.addComponent(enemyCollider);
         return enemy;
     }
 

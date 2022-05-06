@@ -32,7 +32,6 @@ public class EnemyPlugin implements IPlugin {
         Entity enemy = createEnemy(gameData, playerPosition);
         world.addEntity(enemy);
 
-        System.out.println("enemy random");
     }
 
     @Override
@@ -43,8 +42,7 @@ public class EnemyPlugin implements IPlugin {
     private Entity createEnemy(GameData gameData, Position target) {
 
         //float deacceleration = 10;
-        float acceleration = 500;
-        float maxSpeed = 300;
+        float acceleration = 100;
         //float rotationSpeed = 5;
         float radius = 8;
         float health = 1;

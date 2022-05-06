@@ -14,6 +14,7 @@ public class Node {
     
     Node parent;
     Tile tile;
+    float evaluationValue;
 
     public Node getParent() {
         return parent;
@@ -30,6 +31,15 @@ public class Node {
     public void setTile(Tile tile) {
         this.tile = tile;
     }
+
+    public float getEvaluationValue() {
+        return evaluationValue;
+    }
+
+    public void setEvaluationValue(float evaluationValue) {
+        this.evaluationValue = evaluationValue;
+    }
+    
     
     public Node(Tile tile){
         this.tile = tile;

@@ -47,11 +47,23 @@ public class AIBrain implements Component {
         float x = tilePosition.getX() - entityPosition.getX();
         float y = tilePosition.getY() - entityPosition.getY();
         entityPosition.setRadians((float) Math.atan2(y, x));
+   
 
+        // Block the enemy from going beyond the scene
+        float dx = entityPosition.getX() + (float) Math.cos(entityPosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime();
+        float dy = entityPosition.getY() + (float) Math.sin(entityPosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime();
+        if (dx > gameData.getSceneWidth() || dx < 0) {
+            return;
+        }
+        if (dy > gameData.getSceneHeight() || dy < 0) {
+            return;
+        }
+        
         // AI goes to the direction it looks
-        entityPosition.setX(entityPosition.getX() + (float) Math.cos(tilePosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime());
-        entityPosition.setY(entityPosition.getY() + (float) Math.sin(tilePosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime());
+        entityPosition.setX(entityPosition.getX() + (float) Math.cos(entityPosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime());
+        entityPosition.setY(entityPosition.getY() + (float) Math.sin(entityPosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime());
 
+        
     }
 
 }

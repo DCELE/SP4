@@ -111,6 +111,17 @@ public class Movement implements Component{
             dx -= speed * dt;
         }
 
+        // Blocks if player goes beyond scene
+        if (x + dx > gameData.getSceneWidth() || x + dx < 0) {
+            dx = 0;
+            dy = 0;
+            return;
+        }
+        if (y + dy > gameData.getSceneHeight() || y + dy < 0) {
+            dx = 0;
+            dy = 0;
+            return;
+        }
         // set position
         x += dx;
         y += dy;

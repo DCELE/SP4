@@ -62,7 +62,7 @@ public class PlayerPlugin implements IPlugin{
         Health playerHealth = new Health(health);
         Collider playerCollider = new Collider(heigth, width);
         MapCollider playerMapCollider = new MapCollider();
-        Animator playerAnimator = new Animator("idle");
+        Animator playerAnimator = new Animator("idle", player);
         playerAnimator.addAnimation("idle", new AnimationFrame[]{new AnimationFrame("player.png", 1)});
         playerAnimator.addAnimation("shooting", new AnimationFrame[]{new AnimationFrame("player_open_mouth.png", 1)});
         

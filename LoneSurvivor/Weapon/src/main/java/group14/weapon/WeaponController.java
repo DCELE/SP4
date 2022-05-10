@@ -48,7 +48,7 @@ public class WeaponController implements IUpdate {
                 
                 // When weapon is shooting the image will change
                 Animator animator = player.getComponent(Animator.class);
-                animator.setTriggerForDuration("shooting", 0.1f);
+                animator.setTriggerForDuration("shooting", 0.15f);
                 
                 // Getting the player position to set the weapon position at the same place
                 Position position = player.getComponent(Position.class);

@@ -19,14 +19,16 @@ public class Animator implements Component {
     private String currentAnimation;
     private int currentIndex;
     private float timer;
+    private Entity entity;
     
     private boolean setForDuration;
     private float triggerDuration;
     private String previousAnimation;
     
-    public Animator(String startAnimation) {
+    public Animator(String startAnimation, Entity entity) {
         this.animations = new HashMap<String, AnimationFrame[]>();
         this.currentAnimation = startAnimation;
+        this.entity = entity;
         currentIndex = 0;
         timer = 0;
         setForDuration = false;
@@ -40,6 +42,8 @@ public class Animator implements Component {
         this.currentAnimation = trigger;
         this.currentIndex = 0;
         this.timer = 0;
+        AnimationFrame[] currentAnimationFrames = this.animations.get(this.currentAnimation);
+        entity.setImage(currentAnimationFrames[this.currentIndex].getImage());
     }
     
     public void setTriggerForDuration(String trigger, float duration) {
@@ -47,15 +51,19 @@ public class Animator implements Component {
         this.triggerDuration = duration;
         this.setForDuration = true;
         setTrigger(trigger);
+        System.out.println("setting trigger " + trigger + " " + duration + " " + previousAnimation + " " + currentAnimation);
     }
 
     @Override
     public void update(Entity entity, GameData gameData, World world) {
+        System.out.println(timer + " " + currentIndex + " " + currentAnimation);
         this.timer += gameData.getDeltaTime();
         
         if (setForDuration == true) {
+            System.out.println("counting down trigger " + triggerDuration);
             triggerDuration -= gameData.getDeltaTime();
             if (triggerDuration <= 0) {
+                System.out.println("setting trigger back to " + previousAnimation);
                 setForDuration = false;
                 setTrigger(previousAnimation);
             }
@@ -64,7 +72,8 @@ public class Animator implements Component {
 
         if (currentAnimationFrames[this.currentIndex].getDuration() < this.timer) {
             this.currentIndex += 1;
-            if (this.currentIndex > currentAnimationFrames.length) {
+            this.timer = 0;
+            if (this.currentIndex >= currentAnimationFrames.length) {
                 this.currentIndex = 0;
             }
             entity.setImage(currentAnimationFrames[this.currentIndex].getImage());

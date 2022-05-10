@@ -19,6 +19,9 @@ public class Room extends Entity{
         this.roomHeigth = roomHeigth;
         this.roomWidth = roomWidth;
         this.room = new Tile[roomWidth][roomHeigth];
+        
+        // Making the room
+        // Getting the height and width of the room and adding tiles
         for (int row = 0; row < roomHeigth; row++) { 
             for (int col = 0; col < roomWidth; col++) { 
                 Tile tile = createTile(room[(int) (Math.random()*(room.length))], col, row);
@@ -36,28 +39,33 @@ public class Room extends Entity{
         return tile;
     }
     
+    // Getting one single tile from the whole room
     public Tile getRoomTile(int x, int y) {
-        if (x < 0 || x > roomWidth) {
+        
+        // Checking if we are outside of the room
+        if (x < 0 || x >= roomWidth) {
             return null;
         }
-        if (y < 0 || y > roomHeigth) {
+        if (y < 0 || y >= roomHeigth) {
             return null;
         }
         return this.room[x][y];
     }
     
+    // Getting one single tile from the whole room by pixels
+    // Calculating which tile based on pixels
     public Tile getTile(int x, int y) {
         
-        if (x < 0 || x > tileWidth * 3 * this.roomWidth) {
+        // Checking if we are outside of the room
+        if (x < 0 || x >= tileWidth * 3 * this.roomWidth) {
             return null;
         }
-        if (y < 0 || y > tileHeigth * 3 * this.roomHeigth) {
+        if (y < 0 || y >= tileHeigth * 3 * this.roomHeigth) {
             return null;
         }
         int tileX = (int) (x / (tileWidth * 3)); // find the right tile on colomn
         int tileY = (int) (y / (tileHeigth * 3)); // find the right tile on row
         
-        System.out.println("tiles " + tileX + " , " + tileY);
         return this.room[tileX][tileY];
     }
 }

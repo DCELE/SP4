@@ -5,6 +5,7 @@
 package group14.common.gameobjects.components;
 
 import group14.common.game.GameData;
+import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 
 /**
@@ -36,7 +37,7 @@ public class Health implements Component {
     }
     
     @Override
-    public void update(Entity entity, GameData gameData) {
+    public void update(Entity entity, GameData gameData, World world) {
     
     }
     

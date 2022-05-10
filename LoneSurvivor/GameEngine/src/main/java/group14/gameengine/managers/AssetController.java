@@ -29,6 +29,7 @@ public class AssetController {
 
     private void loadAssets() {      
         assetManager.load("assets/player.png", Texture.class);
+        assetManager.load("assets/player_open_mouth.png", Texture.class);
         assetManager.load("assets/enemy.png", Texture.class);
         assetManager.load("assets/room.png", Texture.class);
         assetManager.load("assets/tile.png", Texture.class);
@@ -45,6 +46,7 @@ public class AssetController {
         assetManager.load("assets/tile009.png", Texture.class);
         assetManager.load("assets/tile010.png", Texture.class);
         assetManager.load("assets/tile011.png", Texture.class);
+        assetManager.load("assets/portal.png", Texture.class);
         
 
         

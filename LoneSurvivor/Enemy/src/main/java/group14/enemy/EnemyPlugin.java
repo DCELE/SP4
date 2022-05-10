@@ -7,7 +7,9 @@ import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Player;
 import group14.common.gameobjects.components.AIBrain;
 import group14.common.gameobjects.components.Collider;
+import group14.common.gameobjects.components.EnemyPunch;
 import group14.common.gameobjects.components.Health;
+import group14.common.gameobjects.components.MapCollider;
 import group14.common.gameobjects.components.Movement;
 import group14.common.gameobjects.components.Position;
 import group14.common.services.IPlugin;
@@ -23,13 +25,15 @@ public class EnemyPlugin implements IPlugin {
 
     @Override
     public void start(GameData gameData, World world) {
+        
+        // Finding the player and creating an enemy and setting its target to be the player
         List<Entity> players = world.getEntities(Player.class);
-        Position playerPosition = null;
+        Entity player = null;
         if (!players.isEmpty()) {
-            playerPosition = players.get(0).getComponent(Position.class);
+            player = players.get(0);
         }
 
-        Entity enemy = createEnemy(gameData, playerPosition);
+        Entity enemy = createEnemy(gameData, player);
         world.addEntity(enemy);
 
     }
@@ -39,10 +43,10 @@ public class EnemyPlugin implements IPlugin {
 
     }
 
-    private Entity createEnemy(GameData gameData, Position target) {
+    private Entity createEnemy(GameData gameData, Entity target) {
 
         //float deacceleration = 10;
-        float acceleration = 100;
+        float acceleration = 50;
         //float rotationSpeed = 5;
         float radius = 8;
         float health = 1;
@@ -56,12 +60,16 @@ public class EnemyPlugin implements IPlugin {
         AIBrain enemyAI = new AIBrain();
         enemyAI.setTarget(target);
         Movement enemyMovement = new Movement(acceleration);
+        MapCollider enemyMapCollider = new MapCollider();
+        EnemyPunch enemyPunch = new EnemyPunch();
 
         enemy.addComponent(enemyPosition);
         enemy.addComponent(enemyHealth);
         enemy.addComponent(enemyCollider);
         enemy.addComponent(enemyAI);
         enemy.addComponent(enemyMovement);
+        enemy.addComponent(enemyMapCollider);
+        enemy.addComponent(enemyPunch);
         return enemy;
     }
 

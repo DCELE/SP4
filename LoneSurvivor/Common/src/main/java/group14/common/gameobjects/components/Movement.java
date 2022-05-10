@@ -9,6 +9,7 @@ import static group14.common.game.Input.DOWN;
 import static group14.common.game.Input.LEFT;
 import static group14.common.game.Input.RIGHT;
 import static group14.common.game.Input.UP;
+import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
@@ -90,7 +91,7 @@ public class Movement implements Component{
     
     
     @Override
-    public void update(Entity entity, GameData gameData) {
+    public void update(Entity entity, GameData gameData, World world) {
         Position position = entity.getComponent(Position.class);
         float x = position.getX();
         float y = position.getY();
@@ -111,17 +112,6 @@ public class Movement implements Component{
             dx -= speed * dt;
         }
 
-        // Blocks if player goes beyond scene
-        if (x + dx > gameData.getSceneWidth() || x + dx < 0) {
-            dx = 0;
-            dy = 0;
-            return;
-        }
-        if (y + dy > gameData.getSceneHeight() || y + dy < 0) {
-            dx = 0;
-            dy = 0;
-            return;
-        }
         // set position
         x += dx;
         y += dy;

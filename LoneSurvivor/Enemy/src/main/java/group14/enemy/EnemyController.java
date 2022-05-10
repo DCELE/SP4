@@ -27,12 +27,7 @@ public class EnemyController implements IUpdate {
 
     @Override
     public void update(GameData gameData, World world) {
-    
-        for (Entity enemy : world.getEntities(Enemy.class)) {
-            AIBrain enemyAI = enemy.getComponent(AIBrain.class);
-            enemyAI.update(enemy, gameData);
-       
-        }
+
     }
     
 }

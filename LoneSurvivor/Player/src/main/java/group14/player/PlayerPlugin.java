@@ -8,8 +8,11 @@ import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Player;
+import group14.common.gameobjects.components.AnimationFrame;
+import group14.common.gameobjects.components.Animator;
 import group14.common.gameobjects.components.Collider;
 import group14.common.gameobjects.components.Health;
+import group14.common.gameobjects.components.MapCollider;
 import group14.common.gameobjects.components.Movement;
 import group14.common.gameobjects.components.Position;
 import group14.common.services.IPlugin;
@@ -58,12 +61,17 @@ public class PlayerPlugin implements IPlugin{
         Movement playerMovement = new Movement(speed);
         Health playerHealth = new Health(health);
         Collider playerCollider = new Collider(heigth, width);
-        
+        MapCollider playerMapCollider = new MapCollider();
+        Animator playerAnimator = new Animator("idle");
+        playerAnimator.addAnimation("idle", new AnimationFrame[]{new AnimationFrame("player.png", 1)});
+        playerAnimator.addAnimation("shooting", new AnimationFrame[]{new AnimationFrame("player_open_mouth.png", 1)});
         
         player.addComponent(playerPosition);
         player.addComponent(playerMovement);
         player.addComponent(playerHealth);
         player.addComponent(playerCollider);
+        player.addComponent(playerMapCollider);
+        player.addComponent(playerAnimator);
         return player;
     } 
     

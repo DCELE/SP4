@@ -5,6 +5,7 @@
 package group14.common.gameobjects.components;
 
 import group14.common.game.GameData;
+import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Node;
 
@@ -15,7 +16,8 @@ import group14.common.gameobjects.Node;
 public class AIBrain implements Component {
 
     private Node node;
-    private Position target;
+    //private Position target;
+    private Entity target;
 
     public Node getNode() {
         return node;
@@ -25,17 +27,29 @@ public class AIBrain implements Component {
         this.node = node;
     }
 
-    public Position getTarget() {
+    // Gets position of target
+    // Return null if there is no target
+    public Position getTargetPosition() {
+        if (target == null) {
+            return null;
+        }
+        else {
+            return target.getComponent(Position.class);
+        }
+    }
+
+    public Entity getTarget() {
         return target;
     }
 
-    public void setTarget(Position target) {
+    
+    public void setTarget(Entity target) {
         this.target = target;
     }
 
     
     @Override
-    public void update(Entity entity, GameData gameData) {
+    public void update(Entity entity, GameData gameData, World world) {
         if (node == null || target == null) {
             return;
         }
@@ -48,16 +62,6 @@ public class AIBrain implements Component {
         float y = tilePosition.getY() - entityPosition.getY();
         entityPosition.setRadians((float) Math.atan2(y, x));
    
-
-        // Block the enemy from going beyond the scene
-        float dx = entityPosition.getX() + (float) Math.cos(entityPosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime();
-        float dy = entityPosition.getY() + (float) Math.sin(entityPosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime();
-        if (dx > gameData.getSceneWidth() || dx < 0) {
-            return;
-        }
-        if (dy > gameData.getSceneHeight() || dy < 0) {
-            return;
-        }
         
         // AI goes to the direction it looks
         entityPosition.setX(entityPosition.getX() + (float) Math.cos(entityPosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime());

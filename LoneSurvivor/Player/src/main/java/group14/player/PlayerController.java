@@ -41,13 +41,6 @@ public class PlayerController implements IUpdate {
             movement.setUp(gameData.getInput().isDown(UP));
             movement.setDown(gameData.getInput().isDown(DOWN));
 
-            
-            
-            
-            
-            
-            movement.update(player, gameData);
-            position.update(player, gameData);
        
         }
     }

@@ -50,6 +50,10 @@ public class Node {
         this.parent = parent;
     }
     
+    
+    // Getting the parent of a node until you get to where you started
+    // All of these nodes will be saved in path so we have the path from
+    // the beginning all the way to that node
     public ArrayList <Node> getPath(){
         ArrayList <Node> path = new ArrayList <Node>();
         Node currentNode = this;

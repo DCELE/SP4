@@ -5,6 +5,7 @@
 package group14.common.gameobjects;
 
 import group14.common.gameobjects.components.Component;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -76,6 +77,10 @@ public class Entity {
         return (O) this.components.get(componentClass);
     }
 
+    public ArrayList<Component> getComponents() {
+        return new ArrayList<Component>(this.components.values());
+    }
+    
     public boolean hasComponent(Class componentClass) {
         return this.components.containsKey(componentClass);
     }

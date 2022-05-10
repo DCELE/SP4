@@ -5,6 +5,7 @@
 package group14.common.gameobjects.components;
 
 import group14.common.game.GameData;
+import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 
 /**
@@ -12,5 +13,5 @@ import group14.common.gameobjects.Entity;
  * @author Dilara
  */
 public interface Component {
-    void update(Entity entity, GameData gameData);
+    void update(Entity entity, GameData gameData, World world);
 }

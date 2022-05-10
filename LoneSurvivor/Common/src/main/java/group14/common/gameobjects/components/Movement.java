@@ -5,7 +5,13 @@
 package group14.common.gameobjects.components;
 
 import group14.common.game.GameData;
+import static group14.common.game.Input.DOWN;
+import static group14.common.game.Input.LEFT;
+import static group14.common.game.Input.RIGHT;
+import static group14.common.game.Input.UP;
+import group14.common.game.World;
 import group14.common.gameobjects.Entity;
+import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
 
 /**
@@ -85,7 +91,7 @@ public class Movement implements Component{
     
     
     @Override
-    public void update(Entity entity, GameData gameData) {
+    public void update(Entity entity, GameData gameData, World world) {
         Position position = entity.getComponent(Position.class);
         float x = position.getX();
         float y = position.getY();
@@ -108,24 +114,28 @@ public class Movement implements Component{
 
         // set position
         x += dx;
-        if (x > gameData.getSceneWidth()) {
-            x = 0;
-        } else if (x < 0) {
-            x = gameData.getSceneWidth();
-        }
-
         y += dy;
-        if (y > gameData.getSceneHeight()) {
-            y = 0;
-        } else if (y < 0) {
-            y = gameData.getSceneHeight();
-        }
+        
 
         position.setX(x);
         position.setY(y);
 
+        float rotationY = (float)Math.sin(position.getRadians());
+        float rotationX = (float)Math.cos(position.getRadians());
+            
+        if (up || down){
+            rotationY = dy;
+        }
+        
+        if (left || right){
+            rotationX = dx;
+        } 
+        
+        position.setRadians((float) Math.atan2(rotationY, rotationX));
+            
         dx = 0;
         dy = 0;
+        
     }
     
     

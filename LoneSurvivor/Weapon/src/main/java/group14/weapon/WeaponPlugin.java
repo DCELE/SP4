@@ -4,10 +4,37 @@
  */
 package group14.weapon;
 
+import group14.common.game.GameData;
+import group14.common.game.World;
+import group14.common.gameobjects.Entity;
+import group14.common.gameobjects.Weapon;
+import group14.common.services.IPlugin;
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.util.lookup.ServiceProviders;
+
 /**
  *
  * @author Dilara
  */
-public class WeaponPlugin {
+
+@ServiceProviders(value = {
+    @ServiceProvider(service = IPlugin.class),})
+
+public class WeaponPlugin implements IPlugin{
+
+    
+    @Override
+    public void start(GameData gameData, World world) {
+    
+    }
+
+    @Override
+    public void stop(GameData gameData, World world) {
+    
+        for (Entity weapon : world.getEntities(Weapon.class)) {
+            world.removeEntity(weapon);
+        }
+        
+    }
     
 }

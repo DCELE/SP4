@@ -5,11 +5,14 @@
 package group14.gameengine.managers;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import group14.common.gameobjects.Entity;
+import group14.common.gameobjects.components.Health;
 import group14.common.gameobjects.components.Position;
 
 /**
@@ -75,5 +78,18 @@ public class AssetController {
             sprite.draw(spriteBatch);
 
         }
+    }
+    public void drawHealth(Entity entity) {
+        Health health = entity.getComponent(Health.class);
+        Position position = entity.getComponent(Position.class);
+        Texture texture = this.assetManager.get("assets/" + entity.getImage());
+
+        float totalBarWidth = 50;
+        float width = (float) health.getHealth() / (float) health.getMaxHealth() * totalBarWidth;
+        this.sr.begin(ShapeType.Filled);
+        this.sr.setColor(Color.GREEN);
+        this.sr.rect(position.getX() - 50 / 2, position.getY() + texture.getHeight() * 3 / 2 + 15, width, 5);
+        this.sr.end();
+
     }
 }

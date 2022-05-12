@@ -6,14 +6,20 @@ package group14.gameengine;
  */
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
+import group14.common.gameobjects.Player;
+import group14.common.gameobjects.PointManager;
 import group14.common.gameobjects.Tile;
 import group14.common.gameobjects.components.Component;
+import group14.common.gameobjects.components.Health;
 import group14.common.services.IPlugin;
 import group14.common.services.IUpdate;
 import group14.gameengine.managers.AssetController;
@@ -39,9 +45,16 @@ public class Game implements ApplicationListener{
     private World world = new World();
     private SpriteBatch spriteBatch;
     private AssetController assetController;
+    private SpriteBatch batch;
+    private BitmapFont font;
     
     @Override
     public void create() {
+        batch = new SpriteBatch();
+        font = new BitmapFont();
+        font.setColor(Color.WHITE);
+        font.getData().setScale(2, 2);
+        
         gameData.setSceneWidth(Gdx.graphics.getWidth());
         gameData.setSceneHeight(Gdx.graphics.getHeight());
         Gdx.input.setInputProcessor(new GameInputProcessor(gameData));
@@ -75,7 +88,25 @@ public class Game implements ApplicationListener{
                 components.update(entity, gameData, world);
             }
         }
+        
         draw();
+        
+        batch.begin();
+        
+        String text = "Point: ";
+        for (Entity point : world.getEntities(PointManager.class)) {
+            PointManager pointManager = (PointManager) point;
+            text += pointManager.getPoint();
+            
+        }
+
+        
+        GlyphLayout layout = new GlyphLayout(font, text);
+        float fontX = gameData.getSceneWidth() / 2 - layout.width / 2;
+
+        font.draw(batch, text, fontX, gameData.getSceneHeight() - 50);
+        
+        batch.end();
     }
 
     @Override
@@ -104,7 +135,11 @@ public class Game implements ApplicationListener{
         }
     }
     spriteBatch.end();
-    
+    for (Entity entity : world.getEntities(Player.class)) {
+            if (entity.hasComponent(Health.class)) {
+                assetController.drawHealth(entity);
+            }
+        }
     }
     
     private final LookupListener lookupListener = new LookupListener() {

@@ -8,15 +8,10 @@ package group14.common.gameobjects;
  *
  * @author Dilara
  */
-public class Player extends Entity{
+public class Portal extends Entity {
+ 
     
-    public Player() {
-        super();
-    }
-
-    public Player(String image) {
+    public Portal(String image) {
         super(image);
     }
-    
-    
 }

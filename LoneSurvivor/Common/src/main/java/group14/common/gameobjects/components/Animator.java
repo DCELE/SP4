@@ -24,6 +24,7 @@ public class Animator implements Component {
     private boolean setForDuration;
     private float triggerDuration;
     private String previousAnimation;
+    private boolean isBlocked = false;
     
     public Animator(String startAnimation, Entity entity) {
         this.animations = new HashMap<String, AnimationFrame[]>();
@@ -47,25 +48,33 @@ public class Animator implements Component {
     }
     
     public void setTriggerForDuration(String trigger, float duration) {
+        if (isBlocked == true) {
+            return;
+        }
         this.previousAnimation = currentAnimation;
         this.triggerDuration = duration;
         this.setForDuration = true;
         setTrigger(trigger);
-        System.out.println("setting trigger " + trigger + " " + duration + " " + previousAnimation + " " + currentAnimation);
     }
 
+    public void setTriggerForDuration(String trigger, float duration, boolean block) {
+        if (isBlocked == true) {
+            return;
+        }
+        setTriggerForDuration(trigger, duration);
+        isBlocked = block;
+    }
+    
     @Override
     public void update(Entity entity, GameData gameData, World world) {
-        System.out.println(timer + " " + currentIndex + " " + currentAnimation);
         this.timer += gameData.getDeltaTime();
         
         if (setForDuration == true) {
-            System.out.println("counting down trigger " + triggerDuration);
             triggerDuration -= gameData.getDeltaTime();
             if (triggerDuration <= 0) {
-                System.out.println("setting trigger back to " + previousAnimation);
                 setForDuration = false;
                 setTrigger(previousAnimation);
+                isBlocked = false;
             }
         }
         AnimationFrame[] currentAnimationFrames = this.animations.get(this.currentAnimation);

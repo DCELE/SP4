@@ -14,7 +14,7 @@ import group14.common.gameobjects.Entity;
  */
 public class EnemyPunch implements Component {
 
-    float cooldown = 0.3f;
+    float cooldown = 1f;
     float timer = 0;
     float damage = 1;
     float range = 16 * 3;
@@ -43,15 +43,20 @@ public class EnemyPunch implements Component {
         
         // Calculating the distance between the enemy position and the target position
         float distance = (float) Math.sqrt(Math.pow(enemyPosition.getX() -
-                targetPosition.getX(),2 + Math.pow(enemyPosition.getY() - 
-                        targetPosition.getY(), 2)));
+                targetPosition.getX(),2) + Math.pow(enemyPosition.getY() - 
+                        targetPosition.getY(), 2));
         
+        System.out.println("distance " + distance);
         // If the distance is less than the range, then the target will lose health
         // after the hit, there will be a cooldown
         if (distance < range) {
+            System.out.println("punching " + distance);
             Health targetHealth = target.getComponent(Health.class);
             targetHealth.damage(damage);
             timer = cooldown;
+            
+            Animator entityAnimator = entity.getComponent(Animator.class);
+            entityAnimator.setTriggerForDuration("eating",0.15f);
             
             // Target will be removed from the world if death
             if (targetHealth.isDeath() == true) {

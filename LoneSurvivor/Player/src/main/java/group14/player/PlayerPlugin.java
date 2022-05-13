@@ -8,6 +8,7 @@ import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Player;
+import group14.common.gameobjects.Weapon;
 import group14.common.gameobjects.components.AnimationFrame;
 import group14.common.gameobjects.components.Animator;
 import group14.common.gameobjects.components.Collider;
@@ -35,12 +36,14 @@ public class PlayerPlugin implements IPlugin{
     world.addEntity(player);
     
     
-    
-    
     }
 
     @Override
     public void stop(GameData gameData, World world) {
+        
+        for (Entity player : world.getEntities(Player.class)) {
+            world.removeEntity(player);
+        }
     
     }
     

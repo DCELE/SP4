@@ -52,6 +52,7 @@ public class AssetController {
         assetManager.load("assets/tile011.png", Texture.class);
         assetManager.load("assets/portal.png", Texture.class);
         assetManager.load("assets/portal_closed.png", Texture.class);
+
         
 
         

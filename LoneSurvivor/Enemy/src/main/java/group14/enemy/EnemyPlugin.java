@@ -5,6 +5,7 @@ import group14.common.game.World;
 import group14.common.gameobjects.Enemy;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Player;
+import group14.common.gameobjects.Weapon;
 import group14.common.gameobjects.components.AIBrain;
 import group14.common.gameobjects.components.AnimationFrame;
 import group14.common.gameobjects.components.Animator;
@@ -75,7 +76,10 @@ public class EnemyPlugin implements IPlugin {
 
     @Override
     public void stop(GameData gameData, World world) {
-
+        
+        for (Entity enemy : world.getEntities(Enemy.class)) {
+            world.removeEntity(enemy);
+        }
     }
 
     

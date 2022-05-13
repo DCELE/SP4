@@ -22,6 +22,9 @@ import group14.common.gameobjects.components.Component;
 import group14.common.gameobjects.components.Health;
 import group14.common.services.IPlugin;
 import group14.common.services.IUpdate;
+import group14.gameengine.gamestate.GameState;
+import group14.gameengine.gamestate.PlayState;
+import group14.gameengine.gamestate.StartState;
 import group14.gameengine.managers.AssetController;
 import group14.gameengine.managers.GameInputProcessor;
 import java.util.Collection;
@@ -38,18 +41,20 @@ import org.openide.util.LookupListener;
 public class Game implements ApplicationListener{
 
     public static OrthographicCamera cam;
-    private final GameData gameData = new GameData();
-    private final Lookup lookup = Lookup.getDefault();
-    private List<IPlugin> gamePlugins = new CopyOnWriteArrayList<>();
-    private Lookup.Result<IPlugin> result;
-    private World world = new World();
-    private SpriteBatch spriteBatch;
-    private AssetController assetController;
-    private SpriteBatch batch;
-    private BitmapFont font;
+    public final GameData gameData = new GameData();
+    public final Lookup lookup = Lookup.getDefault();
+    public List<IPlugin> gamePlugins = new CopyOnWriteArrayList<>();
+    public Lookup.Result<IPlugin> result;
+    public World world = new World();
+    public SpriteBatch spriteBatch;
+    public AssetController assetController;
+    public SpriteBatch batch;
+    public BitmapFont font;
+    public GameState currentGameState;
     
     @Override
     public void create() {
+
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.WHITE);
@@ -57,7 +62,7 @@ public class Game implements ApplicationListener{
         
         gameData.setSceneWidth(Gdx.graphics.getWidth());
         gameData.setSceneHeight(Gdx.graphics.getHeight());
-        Gdx.input.setInputProcessor(new GameInputProcessor(gameData));
+
 
         cam = new OrthographicCamera(gameData.getSceneWidth(), gameData.getSceneHeight());
         cam.translate(gameData.getSceneWidth() / 2, gameData.getSceneHeight() / 2);
@@ -65,8 +70,9 @@ public class Game implements ApplicationListener{
         this.spriteBatch = new SpriteBatch();
         this.assetController = new AssetController();
         result = lookup.lookupResult(IPlugin.class);
-        result.addLookupListener(lookupListener);
+//        result.addLookupListener(lookupListener);
         result.allItems();
+        currentGameState = new StartState(this);
     }
 
     @Override
@@ -76,37 +82,7 @@ public class Game implements ApplicationListener{
 
     @Override
     public void render() {
-        gameData.setDeltaTime(Gdx.graphics.getDeltaTime());
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        gameData.getInput().update();
-        for (IUpdate update : lookup.lookupAll(IUpdate.class)) {
-            update.update(gameData, world);
-        }
-        // Updates all components in all entities
-        for (Entity entity : world.getEntities()){
-            for (Component components : entity.getComponents()) {
-                components.update(entity, gameData, world);
-            }
-        }
-        
-        draw();
-        
-        batch.begin();
-        
-        String text = "Point: ";
-        for (Entity point : world.getEntities(PointManager.class)) {
-            PointManager pointManager = (PointManager) point;
-            text += pointManager.getPoint();
-            
-        }
-
-        
-        GlyphLayout layout = new GlyphLayout(font, text);
-        float fontX = gameData.getSceneWidth() / 2 - layout.width / 2;
-
-        font.draw(batch, text, fontX, gameData.getSceneHeight() - 50);
-        
-        batch.end();
+        currentGameState.render();
     }
 
     @Override
@@ -124,48 +100,38 @@ public class Game implements ApplicationListener{
     
     }
     
-    private void draw() {
-    spriteBatch.begin();
-    for (Entity entity : world.getEntities(Tile.class)) {
-            assetController.drawEntity(entity, this.spriteBatch);
-    }
-    for (Entity entity : world.getEntities()) {
-        if (!entity.getClass().equals(Tile.class)){
-            assetController.drawEntity(entity, this.spriteBatch);
-        }
-    }
-    spriteBatch.end();
-    for (Entity entity : world.getEntities(Player.class)) {
-            if (entity.hasComponent(Health.class)) {
-                assetController.drawHealth(entity);
-            }
-        }
-    }
-    
-    private final LookupListener lookupListener = new LookupListener() {
-        @Override
-        public void resultChanged(LookupEvent le) {
-
-            Collection<? extends IPlugin> updated = result.allInstances();
-
-            for (IPlugin plugins : updated) {
-                // Newly installed modules
-                if (!gamePlugins.contains(plugins)) {
-                    plugins.start(gameData, world);
-                    gamePlugins.add(plugins);
-                }
-            }
-
-            // Stop and remove module
-            for (IPlugin plugins : gamePlugins) {
-                if (!updated.contains(plugins)) {
-                    plugins.stop(gameData, world);
-                    gamePlugins.remove(plugins);
-                }
-            }
-        }
-
-    };
     
     
+    public void switchState(GameState gameState) {
+        currentGameState.onClose();
+        currentGameState = gameState;
+        currentGameState.onOpen();
+    }
+    
+//    private final LookupListener lookupListener = new LookupListener() {
+//        @Override
+//        public void resultChanged(LookupEvent le) {
+//
+//            Collection<? extends IPlugin> updated = result.allInstances();
+//
+//            for (IPlugin plugins : updated) {
+//                // Newly installed modules
+//                if (!gamePlugins.contains(plugins)) {
+//                    plugins.start(gameData, world);
+//                    gamePlugins.add(plugins);
+//                }
+//            }
+//
+//            // Stop and remove module
+//            for (IPlugin plugins : gamePlugins) {
+//                if (!updated.contains(plugins)) {
+//                    plugins.stop(gameData, world);
+//                    gamePlugins.remove(plugins);
+//                }
+//            }
+//        }
+//
+//    };
+//    
+//    
 }

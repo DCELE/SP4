@@ -37,6 +37,10 @@ public class WeaponPlugin implements IPlugin{
             world.removeEntity(weapon);
         }
         
+        for (Entity pointManager : world.getEntities(PointManager.class)) {
+            world.removeEntity(pointManager);
+        }
+        
     }
     
 }

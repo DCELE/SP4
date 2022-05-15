@@ -7,6 +7,7 @@ package group14.common.gameobjects.components;
 import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
+import java.sql.Array;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Position implements Component {
         this.y = y;
         this.radians = radians;
     }
+    
 
     public float getX() {
         return x;

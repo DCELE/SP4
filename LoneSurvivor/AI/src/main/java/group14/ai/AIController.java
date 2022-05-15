@@ -9,6 +9,7 @@ import group14.common.game.World;
 import group14.common.gameobjects.Enemy;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Node;
+import group14.common.gameobjects.Player;
 import group14.common.gameobjects.Room;
 import group14.common.gameobjects.Tile;
 import group14.common.gameobjects.components.AIBrain;
@@ -30,6 +31,7 @@ public class AIController implements IUpdate{
     
     public void AStar(Entity entity, Room room){
         
+    
        // Get AIBrain and check if it has a target
        AIBrain entityAI = entity.getComponent(AIBrain.class);
        if (entityAI.getTarget() == null) {

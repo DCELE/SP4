@@ -16,6 +16,10 @@ public class Node {
     Tile tile;
     float evaluationValue;
 
+    public Node(String name, boolean b, org.w3c.dom.Node item, org.w3c.dom.Node parentNode) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public Node getParent() {
         return parent;
     }

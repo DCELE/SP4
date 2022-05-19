@@ -44,7 +44,7 @@ public class PlayerControllerTest {
         gameData = new GameData();
         
         
-        gameData.getInput().isDown(0);
+        //gameData.getInput().isDown(0);
         gameData.setSceneWidth(200);
         gameData.setSceneHeight(300);
         gameData.setDeltaTime(1);
@@ -72,10 +72,14 @@ public class PlayerControllerTest {
         Position position = player.getComponent(Position.class);
         Movement movement = player.getComponent(Movement.class);
         
+        movement.setRight(true);
+        movement.update(player, gameData, world);
+        
+        
         float x = position.getX();
         float y = position.getY();
         
-        //playerController.update(gameData, world);
+        playerController.update(gameData, world);
         
         position = player.getComponent(Position.class);
         

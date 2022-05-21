@@ -40,10 +40,10 @@ public class ApplicationTest extends NbTestCase {
 
     public void testApplication() throws InterruptedException, IOException {
         
-        System.out.println("hej" + ADD_ENEMY_UPDATES_FILE);
-        System.out.println("hej" + REM_ENEMY_UPDATES_FILE);
-        System.out.println("hej" + UPDATES_FILE);
-        // SETUP
+//        System.out.println("hej" + ADD_ENEMY_UPDATES_FILE);
+//        System.out.println("hej" + REM_ENEMY_UPDATES_FILE);
+//        System.out.println("hej" + UPDATES_FILE);
+//        // SETUP
         List<IUpdate> processors = new CopyOnWriteArrayList<>();
         List<IPlugin> plugins = new CopyOnWriteArrayList<>();
 

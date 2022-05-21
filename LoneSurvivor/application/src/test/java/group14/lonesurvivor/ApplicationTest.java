@@ -69,15 +69,15 @@ public class ApplicationTest extends NbTestCase {
         assertEquals("One plugins", 4, plugins.size());
         assertEquals("One processors", 4, processors.size());
    
-        // TEST: Unload Enemy via UC
-        copy(get(REM_ENEMY_UPDATES_FILE), get(UPDATES_FILE), REPLACE_EXISTING);
-
-         waitForUpdate(processors, plugins, 10000);
-        // ASSERTS: Enemy unloaded
-        assertEquals("No plugins", 3, plugins.size());
-        assertEquals("No processors", 3, processors.size());
-
-        copy(get(ADD_ENEMY_UPDATES_FILE), get(UPDATES_FILE), REPLACE_EXISTING);
+//        // TEST: Unload Enemy via UC
+//        copy(get(REM_ENEMY_UPDATES_FILE), get(UPDATES_FILE), REPLACE_EXISTING);
+//
+//         waitForUpdate(processors, plugins, 10000);
+//        // ASSERTS: Enemy unloaded
+//        assertEquals("No plugins", 3, plugins.size());
+//        assertEquals("No processors", 3, processors.size());
+//
+//        copy(get(ADD_ENEMY_UPDATES_FILE), get(UPDATES_FILE), REPLACE_EXISTING);
     }
 
     private void waitForUpdate(List<IUpdate> processors ,List<IPlugin> plugins, long millis) throws InterruptedException {

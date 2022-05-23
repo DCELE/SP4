@@ -27,7 +27,8 @@ import org.openide.util.LookupListener;
  * @author Dilara
  */
 public class PlayState extends GameState{
-
+// the gaming screen
+    
     public PlayState(Game game) {
         super(game);
         Gdx.input.setInputProcessor(new GameInputProcessor(game.gameData));
@@ -38,6 +39,7 @@ public class PlayState extends GameState{
     
     @Override
     public void onOpen() {
+        // when the screen opens then we will open every IPlugin
     Collection<? extends IPlugin> updated = game.result.allInstances();
 
             for (IPlugin plugins : updated) {
@@ -51,6 +53,8 @@ public class PlayState extends GameState{
 
     @Override
     public void onClose() {
+        // when closing the screen then the plugins will stop
+        
         game.gameData.getInput().resetKeys();
             game.result.removeLookupListener(lookupListener);
              for (IPlugin plugins : game.gamePlugins) {
@@ -64,6 +68,8 @@ public class PlayState extends GameState{
     @Override
     public void render() {
     
+        // deleting everything that is on the screen and then start again
+        
         game.gameData.setDeltaTime(Gdx.graphics.getDeltaTime());
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.gameData.getInput().update();
@@ -81,13 +87,13 @@ public class PlayState extends GameState{
         
         game.batch.begin();
         
+        // Point text on the screen with updating points
         String text = "Point: ";
         for (Entity point : game.world.getEntities(PointManager.class)) {
             PointManager pointManager = (PointManager) point;
             text += pointManager.getPoint();
             
         }
-
         
         GlyphLayout layout = new GlyphLayout(game.font, text);
         float fontX = game.gameData.getSceneWidth() / 2 - layout.width / 2;

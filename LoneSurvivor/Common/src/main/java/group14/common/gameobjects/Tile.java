@@ -10,8 +10,14 @@ package group14.common.gameobjects;
  */
 public class Tile extends Entity{
 
+    // Tile is the entity that shows one tile. If there are 4 tiles in the room, then there will 
+    // be 4 tile entities in the room
     
+    
+    // Every tile needs a tiletype
     TileType tileType;
+    
+    // Tile coordinate in the room
     int roomX;
     int roomY;
     

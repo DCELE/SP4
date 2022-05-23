@@ -15,6 +15,19 @@ import java.util.HashMap;
  */
 public class Animator implements Component {
 
+    // Animator contains different animations, i.e. idle, walk
+    // Every animation that an animator has will have an unique name
+    // It will be possible to change the animations based on the unique names
+    // Example:
+    // The current animation is idle which is called "idle"
+    // We want the animator to play the walk animation which is called "walk"
+    // Then we will set trigger to walk and the images will change
+    
+    // An animation can contain several images. This is where animation frames comes in.
+    // One animation frame is one image with a timer on. That timer is the time that the image
+    // will be shown
+    // One animation can contain several animation frames.
+    
     private HashMap<String, AnimationFrame[]> animations;
     private String currentAnimation;
     private int currentIndex;

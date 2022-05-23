@@ -30,13 +30,16 @@ public class Collider implements Component {
         this.width = width;
     }
     
+    // Method to check if a point is inside the collider
     public boolean checkPointCollider(float pointX, float pointY, float positionX, float positionY) {
 
+        // Getting every corner in the collider (upper left and right corner, lower left and right corner)
         float x1 = positionX - this.width / 2;
         float x2 = positionX + this.width / 2;
         float y1 = positionY - this.height / 2;
         float y2 = positionY + this.height / 2;
 
+        // Checking if the point we are looking at is inside these corners
         if (pointX > x1 && pointX < x2 && pointY > y1 && pointY < y2) {
             return true;
         } else {

@@ -23,74 +23,67 @@ import group14.gameengine.Game;
  */
 public class EndState extends GameState {
 
-     ImageButton startButton;
+    ImageButton startButton;
     Table buttons;
     Texture startButtonTexture;
     TextureRegion startButtonRegion;
     TextureRegionDrawable startButtonDrawable;
     Stage stage;
-    
+
+    // end game screen
     public EndState(Game game) {
         super(game);
-        
+
         buttons = new Table();
         stage = new Stage(new ScreenViewport());
         startButtonTexture = new Texture("assets/start_button.png");
         startButtonRegion = new TextureRegion(startButtonTexture);
         startButtonDrawable = new TextureRegionDrawable(startButtonRegion);
-        
-        
+
+        // Creating button and giving it an animation when clicked
         startButton = new ImageButton(startButtonDrawable);
-        
+
         startButton.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("assets/start_button.png"))));
-        
         startButton.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("assets/start_button_pressed.png"))));
-        
+
         stage.addActor(startButton);
+
+        // size of the button
         float heigth = (float) (startButtonTexture.getHeight() * 0.5);
         float width = (float) (startButtonTexture.getWidth() * 0.5);
         startButton.setSize(width, heigth);
-        startButton.setPosition(game.gameData.getSceneWidth() / 2 - width /2, 50);
-        
+        startButton.setPosition(game.gameData.getSceneWidth() / 2 - width / 2, 50);
+
+        // listen to mouse click on the button
         startButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Exit button clicked");
                 game.switchState(new PlayState(game));
             }
-            
+
         });
         Gdx.input.setInputProcessor(stage);
     }
-    
+
     @Override
     public void onOpen() {
-        
-    
+
     }
 
     @Override
     public void onClose() {
-            stage.dispose();
+        stage.dispose();
     }
 
     @Override
     public void render() {
-    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        //Gdx.gl.glClearColor(66, 40, 53, 1);
-        Gdx.gl.glClearColor(66f/255.0f, 40f/255.0f, 53f/255.0f, 1);
-
-
-//        game.batch.begin();
-        //game.batch.draw(logo, game.gameData.getSceneWidth() / 2, game.gameData.getSceneHeight() / 2);
-//        float heigth = (float) (logo.getHeight() * 0.3);
-//        float width = (float) (logo.getWidth() * 0.3);
-//        game.batch.draw(logo, (float) game.gameData.getSceneWidth() / 2 - width / 2, 
-//                (float) game.gameData.getSceneHeight() / 2 - heigth / 2 + 30, width, heigth);
-//        game.batch.end();
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
+        // background color
+        Gdx.gl.glClearColor(66f / 255.0f, 40f / 255.0f, 53f / 255.0f, 1);
+
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
     }
-    
+
 }

@@ -26,6 +26,7 @@ public class WeaponPlugin implements IPlugin{
     
     @Override
     public void start(GameData gameData, World world) {
+        // add point system to the world at the beginning
         PointManager pointManager = new PointManager();
         world.addEntity(pointManager);
     }
@@ -33,6 +34,7 @@ public class WeaponPlugin implements IPlugin{
     @Override
     public void stop(GameData gameData, World world) {
     
+        // when stop: remove weapon and point manager to make sure it is gone when module is uninstalled
         for (Entity weapon : world.getEntities(Weapon.class)) {
             world.removeEntity(weapon);
         }

@@ -15,8 +15,10 @@ import group14.common.gameobjects.Node;
  */
 public class AIBrain implements Component {
 
+    // Node the AI will go after
     private Node node;
-    //private Position target;
+    
+    // The target is the goal
     private Entity target;
 
     public Node getNode() {
@@ -50,20 +52,29 @@ public class AIBrain implements Component {
     
     @Override
     public void update(Entity entity, GameData gameData, World world) {
+        
+        // Check if there is a node or a target, if not then return from the method
         if (node == null || target == null) {
             return;
         }
+        
+        // Get position of tile.
+        // Nodes contain tiles, and we will get the position of that tile
         Position tilePosition = node.getTile().getComponent(Position.class);
+        
+        // Get the movement and position of the enemy
         Movement entityMovement = entity.getComponent(Movement.class);
         Position entityPosition = entity.getComponent(Position.class);
 
         // Calculate which direction the AI looks so it looks at its target
         float x = tilePosition.getX() - entityPosition.getX();
         float y = tilePosition.getY() - entityPosition.getY();
+        
+        // set the rotation to the enemy
         entityPosition.setRadians((float) Math.atan2(y, x));
    
-        
         // AI goes to the direction it looks
+        // Setting the AI position according to the rotation and movement speed
         entityPosition.setX(entityPosition.getX() + (float) Math.cos(entityPosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime());
         entityPosition.setY(entityPosition.getY() + (float) Math.sin(entityPosition.getRadians()) * entityMovement.getSpeed() * gameData.getDeltaTime());
 

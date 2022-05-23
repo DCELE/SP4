@@ -42,19 +42,20 @@ public class EnemyPunch implements Component {
         Position targetPosition = target.getComponent(Position.class);
         
         // Calculating the distance between the enemy position and the target position
+        // to see if we are in the distance that we can hit the player
         float distance = (float) Math.sqrt(Math.pow(enemyPosition.getX() -
                 targetPosition.getX(),2) + Math.pow(enemyPosition.getY() - 
                         targetPosition.getY(), 2));
         
-        System.out.println("distance " + distance);
         // If the distance is less than the range, then the target will lose health
         // after the hit, there will be a cooldown
         if (distance < range) {
-            System.out.println("punching " + distance);
             Health targetHealth = target.getComponent(Health.class);
             targetHealth.damage(damage);
             timer = cooldown;
             
+            // Adding animation so everytime the enemy punches then it will change to the
+            // eating animation
             Animator entityAnimator = entity.getComponent(Animator.class);
             entityAnimator.setTriggerForDuration("eating",0.15f);
             

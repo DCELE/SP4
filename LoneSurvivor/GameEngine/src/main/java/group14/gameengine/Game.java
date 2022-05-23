@@ -70,7 +70,7 @@ public class Game implements ApplicationListener{
         this.spriteBatch = new SpriteBatch();
         this.assetController = new AssetController();
         result = lookup.lookupResult(IPlugin.class);
-//        result.addLookupListener(lookupListener);
+
         result.allItems();
         currentGameState = new StartState(this);
     }
@@ -100,38 +100,11 @@ public class Game implements ApplicationListener{
     
     }
     
-    
-    
+
     public void switchState(GameState gameState) {
         currentGameState.onClose();
         currentGameState = gameState;
         currentGameState.onOpen();
     }
-    
-//    private final LookupListener lookupListener = new LookupListener() {
-//        @Override
-//        public void resultChanged(LookupEvent le) {
-//
-//            Collection<? extends IPlugin> updated = result.allInstances();
-//
-//            for (IPlugin plugins : updated) {
-//                // Newly installed modules
-//                if (!gamePlugins.contains(plugins)) {
-//                    plugins.start(gameData, world);
-//                    gamePlugins.add(plugins);
-//                }
-//            }
-//
-//            // Stop and remove module
-//            for (IPlugin plugins : gamePlugins) {
-//                if (!updated.contains(plugins)) {
-//                    plugins.stop(gameData, world);
-//                    gamePlugins.remove(plugins);
-//                }
-//            }
-//        }
-//
-//    };
-//    
-//    
+     
 }

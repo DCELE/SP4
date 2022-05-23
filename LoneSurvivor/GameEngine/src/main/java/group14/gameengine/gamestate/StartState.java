@@ -33,6 +33,7 @@ public class StartState extends GameState {
     
     public StartState(Game game) {
         super(game);
+        // logo is the picture
         logo = new Texture("assets/startscreen3.png");
         buttons = new Table();
         stage = new Stage(new ScreenViewport());
@@ -40,7 +41,7 @@ public class StartState extends GameState {
         startButtonRegion = new TextureRegion(startButtonTexture);
         startButtonDrawable = new TextureRegionDrawable(startButtonRegion);
         
-        
+        // creating button and adding animation when clicked on
         startButton = new ImageButton(startButtonDrawable);
         
         startButton.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("assets/start_button.png"))));
@@ -48,15 +49,17 @@ public class StartState extends GameState {
         startButton.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("assets/start_button_pressed.png"))));
         
         stage.addActor(startButton);
+        
+        // size of the buttoj
         float heigth = (float) (startButtonTexture.getHeight() * 0.5);
         float width = (float) (startButtonTexture.getWidth() * 0.5);
         startButton.setSize(width, heigth);
         startButton.setPosition(game.gameData.getSceneWidth() / 2 - width /2, 50);
         
+        // listen to mouse click
         startButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Exit button clicked");
                 game.switchState(new PlayState(game));
             }
             
@@ -73,18 +76,20 @@ public class StartState extends GameState {
 
     @Override
     public void onClose() {
+        // delete the start screen
         stage.dispose();
     }
 
     @Override
     public void render() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        //Gdx.gl.glClearColor(66, 40, 53, 1);
+        // Background color
         Gdx.gl.glClearColor(66f/255.0f, 40f/255.0f, 53f/255.0f, 1);
 
 
         game.batch.begin();
-        //game.batch.draw(logo, game.gameData.getSceneWidth() / 2, game.gameData.getSceneHeight() / 2);
+
+        // size of logo image
         float heigth = (float) (logo.getHeight() * 0.35);
         float width = (float) (logo.getWidth() * 0.35);
         game.batch.draw(logo, (float) game.gameData.getSceneWidth() / 2 - width / 2, 

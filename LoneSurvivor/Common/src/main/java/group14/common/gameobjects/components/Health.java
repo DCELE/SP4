@@ -36,6 +36,7 @@ public class Health implements Component {
         maxHealth = health;
     }
     
+    // Damage method will cause damage to health, and if the health is 0 then the entity dies
     public void damage(float damage){
         health -= damage;
         if (health <= 0){

@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Entity {
 
     private UUID id;
-    private HashMap<Class, Component> components;
+    private HashMap<Class, Component> components; // contains the components an entity can have
 
     private String image;
     private float roomHeight;

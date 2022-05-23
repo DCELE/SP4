@@ -74,41 +74,53 @@ public class WaveController implements IUpdate {
         return enemy;
     }
 
-//      //Finding the player and creating an enemy and setting its target to be the player
-//        List<Entity> players = world.getEntities(Player.class);
-//        Entity player = null;
-//        if (!players.isEmpty()) {
-//            player = players.get(0);
-//        }
-//
-//        Entity enemy = createEnemy(gameData, player);
-//        world.addEntity(enemy);
+
     @Override
     public void update(GameData gameData, World world) {
+        
+        // setting timer between waves
         timer -= gameData.getDeltaTime();
+        
+        // time between enemies when spawning to avoid them all coming at once
         timerSpawn -= gameData.getDeltaTime();
+        
+        // When timer is 0 then the timer will be set to the time between waves
         if (timer < 0) {
             timer = timeBetweenWaves;
 
-            queue += numberOfEnemiesSpawningFirstRound;
+            //number of enemies that are waiting to be spawning. we add more enemies here
+            // the number of enemies will increase by a specific number and that new number will then
+            // increase again with the specific number
+            queue += numberOfEnemiesSpawningFirstRound; // number of enemies that are waiting to be spawning
             numberOfEnemiesSpawningFirstRound += enemiesIncrementBy;
         }
         
+        // if the time between enemies when spawning is less than 0  and queue is more than 0 
+        // then the time between spawns will be changed to the time between waves
         if (timerSpawn < 0 && queue > 0) {
             timerSpawn = timeBetweenSpawns;
+            
+            // Getting the player to set them as the target for the enemy
             List<Entity> players = world.getEntities(Player.class);
             Entity player = null;
+            // if there is a player then the first player in the list will be put as the player
             if (!players.isEmpty()) {
                 player = players.get(0);
             }
+            
+            // getting every portal
             List<Entity> portals = world.getEntities(Portal.class);
+            
+            // if number of portal are zero the return out the method
             if (portals.size() == 0) {
                 return;
             }
+            
+            // Enemies will spawn from random portals
             Portal enemyPortal = (Portal) portals.get((int) (Math.random() * (portals.size() - 0)));
             Animator portalAnimator = enemyPortal.getComponent(Animator.class);
             Position enemyPortalPosition = enemyPortal.getComponent(Position.class);
-            portalAnimator.setTriggerForDuration("opening", 1, true);
+            portalAnimator.setTriggerForDuration("opening", 1, true); // portal animation
             Entity newEnemy = createEnemy(gameData, player, enemyPortalPosition.getX(), enemyPortalPosition.getY());
             world.addEntity(newEnemy);
 

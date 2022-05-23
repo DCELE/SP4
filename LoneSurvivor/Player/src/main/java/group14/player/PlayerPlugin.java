@@ -32,15 +32,16 @@ public class PlayerPlugin implements IPlugin{
 
     @Override
     public void start(GameData gameData, World world) {
+        // creating player at start and adding to world
     Entity player = createPlayer(gameData);
     world.addEntity(player);
-    
     
     }
 
     @Override
     public void stop(GameData gameData, World world) {
         
+        // removing player from world at stop to make sure it is gone when module is uninstalled
         for (Entity player : world.getEntities(Player.class)) {
             world.removeEntity(player);
         }
@@ -49,11 +50,7 @@ public class PlayerPlugin implements IPlugin{
     
     private Entity createPlayer(GameData gameData) {
         
-        //float deacceleration = 10;
         float speed = 300;
-        //float rotationSpeed = 5;
-        float radius = 8;
-        
         float health = 10;
         float heigth = 13 * 3;
         float width = 12 * 3;

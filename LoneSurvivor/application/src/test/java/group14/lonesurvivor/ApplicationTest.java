@@ -20,9 +20,9 @@ import org.openide.util.Lookup;
 public class ApplicationTest extends NbTestCase {
 
     // TODO: Put your own paths here...
-    private static final String ADD_ENEMY_UPDATES_FILE = "/Users/muhamadsdu/Desktop/SP4/LoneSurvivor/application/src/test/resources/enemy/updates.xml";
-    private static final String REM_ENEMY_UPDATES_FILE = "/Users/muhamadsdu/Desktop/SP4/LoneSurvivor/application/src/test/resources/remenemy/updates.xml";
-    private static final String UPDATES_FILE = "/Users/muhamadsdu/Desktop/SP4/LoneSurvivor/netbeans_site/updates.xml";
+    private static final String ADD_ENEMY_UPDATES_FILE = "/Users/Dilara/Documents/GitHub/Semesterprojekt%204/SP4/LoneSurvivor/application/src/test/resources/enemy/updates.xml";
+    private static final String REM_ENEMY_UPDATES_FILE = "/Users/Dilara/Documents/GitHub/Semesterprojekt%204/SP4/LoneSurvivor/application/src/test/resources/remenemy/updates.xml";
+    private static final String UPDATES_FILE = "/Users/Dilara/Documents/GitHub/Semesterprojekt%204/SP4/LoneSurvivor/netbeans_site/updates.xml";
 
     public static Test suite() {
         return NbModuleSuite.createConfiguration(ApplicationTest.class).

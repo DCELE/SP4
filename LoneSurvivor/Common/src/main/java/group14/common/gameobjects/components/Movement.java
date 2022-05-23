@@ -117,22 +117,28 @@ public class Movement implements Component{
         y += dy;
         
 
+        // setting the coordinates as the position
         position.setX(x);
         position.setY(y);
 
+        // based on the direction the player goes, then the rotation will change
         float rotationY = (float)Math.sin(position.getRadians());
         float rotationX = (float)Math.cos(position.getRadians());
             
+        // if up or down is pressed, then the player will move on the y axis
         if (up || down){
             rotationY = dy;
         }
         
+        // if left or right is pressed, then the player will move on the x axis
         if (left || right){
             rotationX = dx;
         } 
         
+        // updating the rotation to make sure the player look at the direction that is walked
         position.setRadians((float) Math.atan2(rotationY, rotationX));
-            
+           
+        // set to 0 to make the player stop moving when keys are not pressed
         dx = 0;
         dy = 0;
         

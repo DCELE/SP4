@@ -30,7 +30,9 @@ public class AssetController {
         this.sr = new ShapeRenderer();
     }
 
-    private void loadAssets() {      
+    private void loadAssets() {    
+        // loading images
+        
         assetManager.load("assets/player.png", Texture.class);
         assetManager.load("assets/player_open_mouth.png", Texture.class);
         assetManager.load("assets/enemy.png", Texture.class);
@@ -52,9 +54,6 @@ public class AssetController {
         assetManager.load("assets/tile011.png", Texture.class);
         assetManager.load("assets/portal.png", Texture.class);
         assetManager.load("assets/portal_closed.png", Texture.class);
-
-        
-
         
     }
 

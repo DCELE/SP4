@@ -29,7 +29,7 @@ import org.openide.util.lookup.ServiceProviders;
 
 public class WeaponController implements IUpdate {
 
-    float cooldown = 0.2f;
+    float cooldown = 0.2f; // time between every bullet
     float timer = 0;
     float weaponDamage = 1;
 
@@ -54,7 +54,8 @@ public class WeaponController implements IUpdate {
                 // Getting the player position to set the weapon position at the same place
                 Position position = player.getComponent(Position.class);
                 Weapon weapon = new Weapon("weapon.png", position.getX(), position.getY(), 300, position.getRadians());
-                float heigth = 3 * 3;
+                // scaling size of weapon up
+                float heigth = 3 * 3; 
                 float width = 3 * 3;
                 
                 // Adding the weapon to the world
@@ -73,29 +74,44 @@ public class WeaponController implements IUpdate {
             Position weaponPosition = weapon.getComponent(Position.class);
             for (Entity entity : world.getEntities()) {
                 Position entityPosition = entity.getComponent(Position.class);
+                
+                // check if the enitity that is hit has a collider or if it is a player
+                // if it does not have a collider or the enitity is a player then we continue
                 if (!entity.hasComponent(Collider.class) || entity.getClass().equals(Player.class)) {
                     continue;
                 }
+                
                 Collider entityCollider = entity.getComponent(Collider.class);
+                
+                // hit compares if weapon x and y positions collides with enitity x and y positions to see if it hits
                 boolean hit = entityCollider.checkPointCollider(weaponPosition.getX(), weaponPosition.getY(), entityPosition.getX(), entityPosition.getY());
                 
                 // If the bullet hits an entity
                 // If the entity has health, then it will lose some
                 // If the entity does not have any health left, then it will be removed from the world
                 // After hitting something, the bullet will be removed from the world
-                // TODO pointsystem her
                 if (hit == true) {
+                    
+                    // check if entity has health
                     if (entity.hasComponent(Health.class)) {
                         Health entityHealth = entity.getComponent(Health.class);
+                        
+                        // entity will lose health according to the damage the weapon makes
                         entityHealth.damage(weaponDamage);
+                        
+                        // if enitity is dead
                         if (entityHealth.isDeath() == true) {
+                            // remove enitity from world
                             world.removeEntity(entity);
+                            
+                            // if entity is dead then point will increase
                             for (Entity point : world.getEntities(PointManager.class)) {
                                 PointManager pointManager = (PointManager) point;
                                 pointManager.increment();
                             }
                         }
                     }
+                    // if the weapon hits something then it will be removed from the world
                     world.removeEntity(weapon);
                 }
             }

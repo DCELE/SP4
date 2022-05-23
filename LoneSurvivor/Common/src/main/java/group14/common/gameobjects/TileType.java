@@ -9,9 +9,9 @@ package group14.common.gameobjects;
  * @author Dilara
  */
 public enum TileType {
+    // TileType is enum because the values for tile1, tile2 etc. will always look the same
     
-    
-    
+    // the different images of tiles
     TILE1(0, "tile000.png"),
     TILE2(0, "tile001.png"),
     TILE3(0, "tile002.png"),

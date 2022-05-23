@@ -16,6 +16,7 @@ public class PointManager extends Entity{
         return point;
     }
     
+    // Increase points with 1
     public void increment() {
         point += 1;
     }

@@ -38,22 +38,28 @@ public class AIController implements IUpdate{
        }
        
        // Get Enemy and Target positions and get room tiles based on those positions
+       // Tiles are used as nodes in A Star
+       // When an Enemy moves, it goes to a tile. It will go to the center of the tile.
        Position enemyPosition = entity.getComponent(Position.class);
        Position targetPosition = entityAI.getTargetPosition();
        Tile enemyTile = room.getTile((int) enemyPosition.getX(), (int) enemyPosition.getY());
        Tile targetTile = room.getTile((int) targetPosition.getX(), (int) targetPosition.getY());
+       
+       // Check if there is a tile to make sure the Enemy and Player are not out of the screen
        if (enemyTile == null || targetTile == null) {
            return;
        }
        
        ArrayList<Node> fringe = new ArrayList<Node>(); // list of all the nodes that will be checked
-       ArrayList<Tile> rejected = new ArrayList<Tile>(); // can contain tiles that have obstacles
+       ArrayList<Tile> rejected = new ArrayList<Tile>(); // list of all nodes that have been checked
+                                                         //can contain tiles that have obstacles
        
        // Current node is the tile the Enemy is on and the goal is the tile the player is on
        Node currentNode = new Node(enemyTile);
        Node goal = new Node(targetTile);
        
        // Add the current node to the fringe
+       // The fringe will be a list of tiles the Enemy will check
        fringe.add(currentNode);
        
        // When enemy calculates path to target
@@ -83,7 +89,11 @@ public class AIController implements IUpdate{
                ArrayList<Node> path = currentNode.getPath();
 
                // First tile (index 0) will always be the tile the enemy is on
-               // Checking if the enemy and player is standing on the same tile
+               // If the enemy and player are on the standing on the same tile then the path 
+               // size would be 1 since the enemy would not need to go to other tiles to find the 
+               // player.
+               
+               // Checking if the enemy and player are standing on the same tile
                if (path.size() > 1) {
                    entityAI.setNode(path.get(1)); // The tile the enemy has to go to to get to the player
                } else {
@@ -92,6 +102,9 @@ public class AIController implements IUpdate{
                return;
            }
           
+           // If we don't find the target, then we will find the neighbours
+           
+           // Getting the tile from the node that is currently being checked
            Tile tile = (Tile) currentNode.getTile();
            
            // Finding the neighbouring tile coordinates around the current node
@@ -113,7 +126,6 @@ public class AIController implements IUpdate{
                    node.setParent(currentNode);
                    fringe.add(node);
                     
-               } else {
                }
            }
        }
@@ -124,13 +136,16 @@ public class AIController implements IUpdate{
         Position nodePostition = node.getTile().getComponent(Position.class);
         Position goalPosition = goal.getTile().getComponent(Position.class);
         
+        // Getting the coordinates
         float x1 = nodePostition.getX();
         float y1 = nodePostition.getY();
         float x2 = goalPosition.getX();
         float y2 = goalPosition.getY();
         
-        // Calculating the distance between the two positions
+        // Calculating the distance between the two positions with pythagoras
         float distance = (float) Math.sqrt(Math.pow((double) (x2 - x1), 2) + Math.pow((double) (y2 - y1), 2));
+        
+        // The heuristics is the distance
         return distance;
     }
     
@@ -149,26 +164,37 @@ public class AIController implements IUpdate{
         
         // Checking nodes in the fringe to find the node in the fringe with the lowest evaluation value
         for (Node node : fringe) {
+            
+            // The new evaluation value is the evaluation value of the node that is currently being checked
             float newEvaluationValue = evaluation(node, goal);
             
+            // if the evaluation value is higher than the new evaluation value, then the evaluation value
+            // will be assigned the new evaluation value and the lowest node will be node that is currently
+            // being checked.
             if (newEvaluationValue < evaluationValue) {
                 evaluationValue = newEvaluationValue;
                 lowestNode = node;
             }
         }
+        // Getting the lowest node so we don't have to look at every node.
         return lowestNode;
     }
     
     @Override
     public void update(GameData gameData, World world) {
+        
+        // Getting every room
         List<Entity> rooms = world.getEntities(Room.class);
+        
+        // If there are no rooms then we will jump out of this method and not run A Star
         if(rooms.isEmpty()){
         return;
         }
         
+        // If there is a room then we will get the first one
         Room room = (Room) rooms.get(0);
         
-        // Getting all enemies and then calculate a star
+        // Getting all enemies and then calculate A Star
         for (Entity entity : world.getEntities(Enemy.class)){
             AStar(entity,room);
         }

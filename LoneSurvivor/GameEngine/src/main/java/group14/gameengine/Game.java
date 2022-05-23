@@ -6,16 +6,25 @@ package group14.gameengine;
  */
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
+import group14.common.gameobjects.Player;
+import group14.common.gameobjects.PointManager;
 import group14.common.gameobjects.Tile;
 import group14.common.gameobjects.components.Component;
+import group14.common.gameobjects.components.Health;
 import group14.common.services.IPlugin;
 import group14.common.services.IUpdate;
+import group14.gameengine.gamestate.GameState;
+import group14.gameengine.gamestate.PlayState;
+import group14.gameengine.gamestate.StartState;
 import group14.gameengine.managers.AssetController;
 import group14.gameengine.managers.GameInputProcessor;
 import java.util.Collection;
@@ -32,19 +41,28 @@ import org.openide.util.LookupListener;
 public class Game implements ApplicationListener{
 
     public static OrthographicCamera cam;
-    private final GameData gameData = new GameData();
-    private final Lookup lookup = Lookup.getDefault();
-    private List<IPlugin> gamePlugins = new CopyOnWriteArrayList<>();
-    private Lookup.Result<IPlugin> result;
-    private World world = new World();
-    private SpriteBatch spriteBatch;
-    private AssetController assetController;
+    public final GameData gameData = new GameData();
+    public final Lookup lookup = Lookup.getDefault();
+    public List<IPlugin> gamePlugins = new CopyOnWriteArrayList<>();
+    public Lookup.Result<IPlugin> result;
+    public World world = new World();
+    public SpriteBatch spriteBatch;
+    public AssetController assetController;
+    public SpriteBatch batch;
+    public BitmapFont font;
+    public GameState currentGameState;
     
     @Override
     public void create() {
+
+        batch = new SpriteBatch();
+        font = new BitmapFont();
+        font.setColor(Color.WHITE);
+        font.getData().setScale(2, 2);
+        
         gameData.setSceneWidth(Gdx.graphics.getWidth());
         gameData.setSceneHeight(Gdx.graphics.getHeight());
-        Gdx.input.setInputProcessor(new GameInputProcessor(gameData));
+
 
         cam = new OrthographicCamera(gameData.getSceneWidth(), gameData.getSceneHeight());
         cam.translate(gameData.getSceneWidth() / 2, gameData.getSceneHeight() / 2);
@@ -52,8 +70,9 @@ public class Game implements ApplicationListener{
         this.spriteBatch = new SpriteBatch();
         this.assetController = new AssetController();
         result = lookup.lookupResult(IPlugin.class);
-        result.addLookupListener(lookupListener);
+//        result.addLookupListener(lookupListener);
         result.allItems();
+        currentGameState = new StartState(this);
     }
 
     @Override
@@ -63,19 +82,7 @@ public class Game implements ApplicationListener{
 
     @Override
     public void render() {
-        gameData.setDeltaTime(Gdx.graphics.getDeltaTime());
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        gameData.getInput().update();
-        for (IUpdate update : lookup.lookupAll(IUpdate.class)) {
-            update.update(gameData, world);
-        }
-        // Updates all components in all entities
-        for (Entity entity : world.getEntities()){
-            for (Component components : entity.getComponents()) {
-                components.update(entity, gameData, world);
-            }
-        }
-        draw();
+        currentGameState.render();
     }
 
     @Override
@@ -93,44 +100,38 @@ public class Game implements ApplicationListener{
     
     }
     
-    private void draw() {
-    spriteBatch.begin();
-    for (Entity entity : world.getEntities(Tile.class)) {
-            assetController.drawEntity(entity, this.spriteBatch);
-    }
-    for (Entity entity : world.getEntities()) {
-        if (!entity.getClass().equals(Tile.class)){
-            assetController.drawEntity(entity, this.spriteBatch);
-        }
-    }
-    spriteBatch.end();
     
+    
+    public void switchState(GameState gameState) {
+        currentGameState.onClose();
+        currentGameState = gameState;
+        currentGameState.onOpen();
     }
     
-    private final LookupListener lookupListener = new LookupListener() {
-        @Override
-        public void resultChanged(LookupEvent le) {
-
-            Collection<? extends IPlugin> updated = result.allInstances();
-
-            for (IPlugin plugins : updated) {
-                // Newly installed modules
-                if (!gamePlugins.contains(plugins)) {
-                    plugins.start(gameData, world);
-                    gamePlugins.add(plugins);
-                }
-            }
-
-            // Stop and remove module
-            for (IPlugin plugins : gamePlugins) {
-                if (!updated.contains(plugins)) {
-                    plugins.stop(gameData, world);
-                    gamePlugins.remove(plugins);
-                }
-            }
-        }
-
-    };
-    
-    
+//    private final LookupListener lookupListener = new LookupListener() {
+//        @Override
+//        public void resultChanged(LookupEvent le) {
+//
+//            Collection<? extends IPlugin> updated = result.allInstances();
+//
+//            for (IPlugin plugins : updated) {
+//                // Newly installed modules
+//                if (!gamePlugins.contains(plugins)) {
+//                    plugins.start(gameData, world);
+//                    gamePlugins.add(plugins);
+//                }
+//            }
+//
+//            // Stop and remove module
+//            for (IPlugin plugins : gamePlugins) {
+//                if (!updated.contains(plugins)) {
+//                    plugins.stop(gameData, world);
+//                    gamePlugins.remove(plugins);
+//                }
+//            }
+//        }
+//
+//    };
+//    
+//    
 }

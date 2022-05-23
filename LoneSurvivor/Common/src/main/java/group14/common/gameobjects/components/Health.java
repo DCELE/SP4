@@ -15,11 +15,17 @@ import group14.common.gameobjects.Entity;
 public class Health implements Component {
 
     float health;
+    float maxHealth;
     boolean death = false;
 
     public float getHealth() {
         return health;
     }
+
+    public float getMaxHealth() {
+        return maxHealth;
+    }
+    
 
     public boolean isDeath() {
         return death;
@@ -27,6 +33,7 @@ public class Health implements Component {
     
     public Health(float health){
         this.health = health;
+        maxHealth = health;
     }
     
     public void damage(float damage){

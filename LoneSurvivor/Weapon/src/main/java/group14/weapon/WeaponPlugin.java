@@ -7,6 +7,7 @@ package group14.weapon;
 import group14.common.game.GameData;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
+import group14.common.gameobjects.PointManager;
 import group14.common.gameobjects.Weapon;
 import group14.common.services.IPlugin;
 import org.openide.util.lookup.ServiceProvider;
@@ -25,7 +26,8 @@ public class WeaponPlugin implements IPlugin{
     
     @Override
     public void start(GameData gameData, World world) {
-    
+        PointManager pointManager = new PointManager();
+        world.addEntity(pointManager);
     }
 
     @Override
@@ -33,6 +35,10 @@ public class WeaponPlugin implements IPlugin{
     
         for (Entity weapon : world.getEntities(Weapon.class)) {
             world.removeEntity(weapon);
+        }
+        
+        for (Entity pointManager : world.getEntities(PointManager.class)) {
+            world.removeEntity(pointManager);
         }
         
     }

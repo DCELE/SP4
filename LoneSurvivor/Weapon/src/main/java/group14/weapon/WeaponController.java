@@ -10,6 +10,7 @@ import group14.common.game.World;
 import group14.common.gameobjects.Enemy;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Player;
+import group14.common.gameobjects.PointManager;
 import group14.common.gameobjects.Weapon;
 import group14.common.gameobjects.components.Animator;
 import group14.common.gameobjects.components.Collider;
@@ -82,12 +83,17 @@ public class WeaponController implements IUpdate {
                 // If the entity has health, then it will lose some
                 // If the entity does not have any health left, then it will be removed from the world
                 // After hitting something, the bullet will be removed from the world
+                // TODO pointsystem her
                 if (hit == true) {
                     if (entity.hasComponent(Health.class)) {
                         Health entityHealth = entity.getComponent(Health.class);
                         entityHealth.damage(weaponDamage);
                         if (entityHealth.isDeath() == true) {
                             world.removeEntity(entity);
+                            for (Entity point : world.getEntities(PointManager.class)) {
+                                PointManager pointManager = (PointManager) point;
+                                pointManager.increment();
+                            }
                         }
                     }
                     world.removeEntity(weapon);

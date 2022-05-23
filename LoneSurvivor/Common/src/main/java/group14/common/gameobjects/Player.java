@@ -18,4 +18,5 @@ public class Player extends Entity{
         super(image);
     }
     
+    
 }

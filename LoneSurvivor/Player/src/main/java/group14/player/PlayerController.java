@@ -13,6 +13,7 @@ import static group14.common.game.Input.UP;
 import group14.common.game.World;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Player;
+import group14.common.gameobjects.components.Health;
 import group14.common.gameobjects.components.Movement;
 import group14.common.gameobjects.components.Position;
 import group14.common.services.IUpdate;
@@ -41,6 +42,8 @@ public class PlayerController implements IUpdate {
             movement.setUp(gameData.getInput().isDown(UP));
             movement.setDown(gameData.getInput().isDown(DOWN));
 
+            Health health = player.getComponent(Health.class);
+            System.out.println(health.getHealth());
        
         }
     }

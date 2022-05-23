@@ -33,7 +33,7 @@ public class StartState extends GameState {
     
     public StartState(Game game) {
         super(game);
-        logo = new Texture("assets/startscreen.png");
+        logo = new Texture("assets/startscreen3.png");
         buttons = new Table();
         stage = new Stage(new ScreenViewport());
         startButtonTexture = new Texture("assets/start_button.png");
@@ -85,8 +85,8 @@ public class StartState extends GameState {
 
         game.batch.begin();
         //game.batch.draw(logo, game.gameData.getSceneWidth() / 2, game.gameData.getSceneHeight() / 2);
-        float heigth = (float) (logo.getHeight() * 0.3);
-        float width = (float) (logo.getWidth() * 0.3);
+        float heigth = (float) (logo.getHeight() * 0.35);
+        float width = (float) (logo.getWidth() * 0.35);
         game.batch.draw(logo, (float) game.gameData.getSceneWidth() / 2 - width / 2, 
                 (float) game.gameData.getSceneHeight() / 2 - heigth / 2 + 30, width, heigth);
         game.batch.end();

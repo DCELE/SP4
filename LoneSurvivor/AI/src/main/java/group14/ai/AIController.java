@@ -29,7 +29,7 @@ import org.openide.util.lookup.ServiceProviders;
 public class AIController implements IUpdate{
     
     public void AStar(Entity entity, Room room){
-        
+
        // Get AIBrain and check if it has a target
        AIBrain entityAI = entity.getComponent(AIBrain.class);
        if (entityAI.getTarget() == null) {

@@ -9,6 +9,7 @@ import group14.common.game.World;
 import group14.common.gameobjects.Enemy;
 import group14.common.gameobjects.Entity;
 import group14.common.gameobjects.Node;
+import group14.common.gameobjects.Player;
 import group14.common.gameobjects.Room;
 import group14.common.gameobjects.Tile;
 import group14.common.gameobjects.components.AIBrain;

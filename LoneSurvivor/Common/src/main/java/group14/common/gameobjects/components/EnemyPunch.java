@@ -62,6 +62,7 @@ public class EnemyPunch implements Component {
             // Target will be removed from the world if death
             if (targetHealth.isDeath() == true) {
                 world.removeEntity(target);
+                gameData.setIsGameOver(true);
             }
         }
         

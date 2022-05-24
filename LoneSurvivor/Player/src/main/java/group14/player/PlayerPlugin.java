@@ -51,7 +51,7 @@ public class PlayerPlugin implements IPlugin{
     private Entity createPlayer(GameData gameData) {
         
         float speed = 300;
-        float health = 10;
+        float health = 1000;
         float heigth = 13 * 3;
         float width = 12 * 3;
         

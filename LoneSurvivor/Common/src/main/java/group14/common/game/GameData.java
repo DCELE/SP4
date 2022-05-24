@@ -14,6 +14,7 @@ public class GameData {
     private int sceneHeight, sceneWidth;
     private Input input;
     private final Input keys = new Input();
+    private boolean isGameOver = false;
  
     public GameData() {
         this.input = new Input();
@@ -46,4 +47,13 @@ public class GameData {
     public Input getInput() {
         return input;
     }
+
+    public boolean getIsGameOver() {
+        return isGameOver;
+    }
+
+    public void setIsGameOver(boolean isGameOver) {
+        this.isGameOver = isGameOver;
+    }
+    
 }

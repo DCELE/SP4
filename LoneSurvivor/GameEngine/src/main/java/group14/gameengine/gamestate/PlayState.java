@@ -40,6 +40,8 @@ public class PlayState extends GameState{
     @Override
     public void onOpen() {
         // when the screen opens then we will open every IPlugin
+        
+        game.gameData.setIsGameOver(false);
     Collection<? extends IPlugin> updated = game.result.allInstances();
 
             for (IPlugin plugins : updated) {
@@ -102,10 +104,10 @@ public class PlayState extends GameState{
         
         game.batch.end();
         
-        List <Entity> players = game.world.getEntities(Player.class);
-        if (players.size() < 1) {
+        if (game.gameData.getIsGameOver()) {
             game.switchState(new EndState(game));
         }
+       
     }
     
     private void draw() {

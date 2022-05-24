@@ -42,10 +42,7 @@ public class WaveController implements IUpdate {
 
     private Entity createEnemy(GameData gameData, Entity target, float x, float y) {
 
-        //float deacceleration = 10;
         float acceleration = 50;
-        //float rotationSpeed = 5;
-        float radius = 8;
         float health = 1;
         float heigth = 16 * 3;
         float width = 11 * 3;

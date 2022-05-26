@@ -74,7 +74,4 @@ public class PlayerPlugin implements IPlugin{
         player.addComponent(playerAnimator);
         return player;
     } 
-    
-    
-    
 }

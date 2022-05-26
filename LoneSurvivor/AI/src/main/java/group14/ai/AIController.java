@@ -143,10 +143,10 @@ public class AIController implements IUpdate{
         float y2 = goalPosition.getY();
         
         // Calculating the distance between the two positions with diagonal distance: pythagoras
-        //float distance = (float) Math.sqrt(Math.pow((double) (x2 - x1), 2) + Math.pow((double) (y2 - y1), 2));
+        float distance = (float) Math.sqrt(Math.pow((double) (x2 - x1), 2) + Math.pow((double) (y2 - y1), 2));
         
         // Calculating the distance between the two positions with euclidean distance
-        float distance = (float) Math.sqrt(Math.pow((double) (x1 - x2), 2) + Math.pow((double) (y1 - y2), 2));
+        // float distance = (float) Math.sqrt(Math.pow((double) (x1 - x2), 2) + Math.pow((double) (y1 - y2), 2));
 
         // The heuristics is the distance
         return distance;

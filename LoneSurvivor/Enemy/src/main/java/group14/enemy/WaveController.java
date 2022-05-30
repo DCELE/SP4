@@ -32,17 +32,17 @@ import org.openide.util.lookup.ServiceProviders;
     @ServiceProvider(service = IUpdate.class),})
 public class WaveController implements IUpdate {
 
-    float timeBetweenWaves = 5f;
+    float timeBetweenWaves = 15f;
     float timer = 0;
     int numberOfEnemiesSpawningFirstRound = 5;
     int enemiesIncrementBy = 2;
-    float timeBetweenSpawns = 0.5f;
+    float timeBetweenSpawns = 1f;
     float timerSpawn = 0;
     int queue = 0;
 
     private Entity createEnemy(GameData gameData, Entity target, float x, float y) {
 
-        float acceleration = 50;
+        float acceleration = 40;
         float health = 1;
         float heigth = 16 * 3;
         float width = 11 * 3;

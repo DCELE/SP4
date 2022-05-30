@@ -74,6 +74,7 @@ public class PlayState extends GameState{
         
         game.gameData.setDeltaTime(Gdx.graphics.getDeltaTime());
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClearColor(240f/255.0f, 240f/255.0f, 221f/255.0f, 1);
         game.gameData.getInput().update();
         for (IUpdate update : game.lookup.lookupAll(IUpdate.class)) {
             update.update(game.gameData, game.world);
